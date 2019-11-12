@@ -4,7 +4,7 @@ package com.jds.service;
 import com.jds.dao.UserDAO;
 import com.jds.entity.UserEntity;
 import com.jds.entity.UserSetting;
-import com.jds.model.Role;
+import com.jds.model.auth.Role;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -158,5 +159,9 @@ public class UserService implements UserDetailsService {
                 .includesTax(maineService.booleanToInt(includesTax))
                 .build()
         );
+    }
+
+    public Optional<UserEntity> fineById(@NonNull int id) {
+        return Optional.ofNullable(dAO.getUserById(id));
     }
 }

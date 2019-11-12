@@ -3,6 +3,7 @@ package com.jds.dao;
 
 import com.jds.entity.UserEntity;
 import com.jds.entity.UserSetting;
+import lombok.NonNull;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -31,7 +32,7 @@ public class UserDAO {
 
     }
 
-    public UserEntity getUser(int id){
+    public UserEntity getUser(int id) {
 
         Session session = sessionFactory.openSession();
 
@@ -50,7 +51,7 @@ public class UserDAO {
         return null;
     }
 
-    public List<UserEntity> getUsers(){
+    public List<UserEntity> getUsers() {
 
         Session session = sessionFactory.openSession();
 
@@ -65,27 +66,27 @@ public class UserDAO {
         return list;
     }
 
-    public UserEntity getUserByName(String name){
+    public UserEntity getUserByName(String name) {
 
-            Session session = sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
 
-            String sql;
-            sql = "select * from users where login like :log";
-            Query query = session.createSQLQuery(sql)
-                    .addEntity(UserEntity.class)
-                    .setParameter("log", name);
-            List<UserEntity> list = query.list();
+        String sql;
+        sql = "select * from users where login like :log";
+        Query query = session.createSQLQuery(sql)
+                .addEntity(UserEntity.class)
+                .setParameter("log", name);
+        List<UserEntity> list = query.list();
 
-            session.close();
+        session.close();
 
-            if (list.size() > 0) {
-                return list.get(0);
-            }
-            return null;
+        if (list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
 
     }
 
-    public UserSetting getUserSetting (int id){
+    public UserSetting getUserSetting(int id) {
         Session session = sessionFactory.openSession();
 
         String sql;
@@ -109,5 +110,23 @@ public class UserDAO {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(setting);
 
+    }
+
+    public UserEntity getUserById(@NonNull int id) {
+        Session session = sessionFactory.openSession();
+
+        String sql;
+        sql = "select * from users where id = :id";
+        Query query = session.createSQLQuery(sql)
+                .addEntity(UserEntity.class)
+                .setParameter("id", id);
+        List<UserEntity> list = query.list();
+
+        session.close();
+
+        if (list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
     }
 }
