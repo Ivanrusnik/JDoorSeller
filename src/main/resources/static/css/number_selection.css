@@ -1,0 +1,102 @@
+.android_main_contener {
+  top: 100px;
+  left: 70%;
+  height: 240px;
+  width: 205px;
+  border: 1px solid #d3d3d3;
+  position: absolute;
+  margin: 100px auto;
+  font-size: 15px;
+  z-index: 2001;
+  background: white;
+  box-shadow: 0 0 5px 2px black;
+  border-radius: 5px;
+  border: 2px solid rgb(52, 58, 64);
+}
+
+.android_counter {
+  z-index: 2003;
+}
+
+.android_hader {
+  height: 50px;
+  border-bottom: 2px solid rgb(52, 58, 64);
+  padding: 5px;
+}
+.android_basement {
+  bottom: 0px;
+  position: absolute;
+  border-top: 1px solid rgb(52, 58, 64);
+  height: 50px;
+  width: 100%;
+}
+.android_basementL {
+  position: absolute;
+  display: inline-block;
+  border-right: 1px solid rgb(52, 58, 64);
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+}
+.android_basementR {
+  position: absolute;
+  display: inline-block;
+  right: 0px;
+  height: 100%;
+  width: 49%;
+  text-align: center;
+  padding: 10px;
+}
+
+.counter_column {
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  cursor: se-resize;
+
+  margin: 0 25% 0 25%;
+  width: 50%;
+}
+
+.counter_line {
+  position: relative;
+  display: block;
+  z-index: 2001;
+}
+#addL {
+  cursor: pointer;
+}
+#reduceL {
+  cursor: pointer;
+}
+#addR {
+  cursor: pointer;
+}
+#reduceR {
+  cursor: pointer;
+}
+
+.line1 {
+  color: gray;
+  font-size: 14px;
+  font-weight: 500;
+}
+.line {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.pass {
+  cursor: pointer;
+}
+.wall_of_darkness {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.7;
+  z-index: 1000;
+}

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap-4.3.1css/bootstrap.min.css">
+
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/template/template.js"></script>
+    <script type="text/javascript" src="../js/template/size-cost-block.class.js"></script>
+    <script type="text/javascript" src="../js/template/validate.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/logoSett.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/displayCss.css"/>
+
+</head>
+<body>
+
+<!--header-->
+<div class="top_head">
+    <div class="container-fluid" id="intro-dm">
+        <a th:href="@{/}"><img src="../images/Header_widht_1300_002 ltl.jpg"></a>
+    </div>
+</div>
+
+<div class="top_head">
+    <div class="form-group">
+
+        <h1 class="display-4">шаблон</h1>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" id="saveTemplate">сохранить</button>
+                <button type="button" class="btn btn-primary" id="close">закрыть</button>
+            </div>
+        </div>
+
+        <span class="ghost" id="typeId" th:utext="${typeId}"></span>
+        <span class="ghost" id="classId" th:utext="${classId}"></span>
+
+        <!--            класс двери:-->
+        <div class="row">
+            <div class="col-2">
+                <label for="doorclassselect">класс двери:</label>
+            </div>
+            <div class="col-4">
+                <select class="form-control" id="doorclassselect"></select>
+            </div>
+        </div>
+
+        <!--            вид двери:-->
+        <div class="row">
+            <div class="col-2">
+                <label for="doortypeselect">вид двери:</label>
+            </div>
+            <div class="col-4">
+                <select class="form-control" id="doortypeselect"></select>
+            </div>
+        </div>
+
+        <!--            заполнить по шаблону-->
+        <div class="row">
+            <div class="col-2">
+                <label for="fillFromTemplate">заполнить по шаблону:</label>
+            </div>
+            <div class="col-4">
+                <select class="form-control" id="fillFromTemplate"></select>
+            </div>
+        </div>
+        <br>
+
+        <div class="accordion" id="accordionExample">
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <h4 class="chapter">Металл</h4>
+
+            </button>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="metalDiv">
+                    <label for="metalSelect0">металл:</label>
+                    <div class="row" id="metalLineDiv0">
+                        <div class="col-md-6 mb-3" id="metalLineSelect0">
+                            <select class="form-control metalSelect" id="metalSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="metalLineSwitch0">
+                            <input type="checkbox" class="custom-control-input metalLineCheckbox"
+                                   id="metalLineCheckbox0">
+                            <label class="custom-control-label" for="metalLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <h4 class="chapter">Размеры</h4>
+
+            </button>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+                <!--width-->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input disabled" id="widthDoorCheckbox">
+                    <label class="custom-control-label" for="widthDoorCheckbox">ширина списком</label>
+                </div>
+                <br>
+                <div class="mb-3" id="widthDoorPeriod">
+                    <label for="widthSizMaxMinDiv">ширина двери: (интервал)</label>
+                    <div class="row" id="widthSizMaxMinDiv">
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="widthDoorMin" placeholder="min">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="widthDoorMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="widthDoorStep" placeholder="step">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control btn-outline-primary" id="widthDoorDefault"
+                                   placeholder="default">
+                        </div>
+                    </div>
+                </div>
+                <div class="ghost" id="widthDoorDiv">
+                    <label for="widthDoorInput0">ширина двери:</label>
+                    <div class="row" id="widthDoorLineDiv0">
+                        <div class="col-md-6 mb-3" id="widthDoorLineSelect0">
+                            <input type="number" class="form-control widthDoorInput" id="widthDoorInput0" data="0"
+                                   placeholder="ширина">
+                        </div>
+                        <div class="custom-control custom-switch" id="widthDoorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input widthDoorLineCheckbox"
+                                   id="widthDoorLineCheckbox0">
+                            <label class="custom-control-label" for="widthDoorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--widthLeaf-->
+                <div class="mb-3" id="widthDoorLeafPeriod">
+                    <label for="widthLeafSizMaxMinDiv">ширина активной створки: (интервал)</label>
+                    <div class="row" id="widthLeafSizMaxMinDiv">
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="widthDoorLeafMin" placeholder="min">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="widthDoorLeafMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="widthDoorLeafStep" placeholder="step">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control btn-outline-primary" id="widthDoorLeafDefault"
+                                   placeholder="default">
+                        </div>
+                    </div>
+                </div>
+
+                <!--height-->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input disabled" id="heightDoorCheckbox">
+                    <label class="custom-control-label" for="heightDoorCheckbox">высота списком</label>
+                </div>
+                <br>
+                <div class="mb-3" id="heightDoorPeriod">
+                    <label for="heightSizMaxMinDiv">высота двери: (интервал)</label>
+                    <div class="row" id="heightSizMaxMinDiv">
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="heightDoorMin" placeholder="min">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="heightDoorMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="heightDoorStep" placeholder="step">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control btn-outline-primary" id="heightDoorDefault"
+                                   placeholder="default">
+                        </div>
+                    </div>
+                </div>
+                <div class="ghost" id="heightDoorDiv">
+                    <label for="heightDoorInput0">высота двери:</label>
+                    <div class="row" id="heightDoorLineDiv0">
+                        <div class="col-md-6 mb-3" id="heightDoorLineSelect0">
+                            <input type="number" class="form-control heightDoorInput" id="heightDoorInput0" data="0"
+                                   placeholder="ширина">
+                        </div>
+                        <div class="custom-control custom-switch" id="heightDoorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input heightDoorLineCheckbox"
+                                   id="heightDoorLineCheckbox0">
+                            <label class="custom-control-label" for="heightDoorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--heightDoorFanlight-->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="heightDoorFanlightCheckbox">
+                    <label class="custom-control-label" for="heightDoorFanlightCheckbox">Фрамуга</label>
+                </div>
+                <br>
+                <div class="mb-3 ghost" id="heightDoorFanlightPeriod">
+                    <label for="heightFanlightSizMaxMinDiv">высота фрамуги: (интервал)</label>
+                    <div class="row" id="heightFanlightSizMaxMinDiv">
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="heightDoorFanlightMin" placeholder="min">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="heightDoorFanlightMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="heightDoorFanlightStep" placeholder="step">
+                        </div>
+                    </div>
+                </div>
+
+                <!--cost setting-->
+                <div class="mb-3 size-cost-block" id="sizeCostsetting">
+                    <label for="sizeCostsettingDiv3">Настройка стоимости размеров:</label>
+                    <br>
+                    <label for="sizeCostsettingDiv3">Ширина:</label>
+                    <div class="row sizeCostLine" id="sizeCostsettingDiv3" data="1">
+                        <div class="col-3">
+                            <input type="number" class="form-control sizeCostWidthInput" id="costOfChangeWidth"
+                                   placeholder="0">
+                            <small class="form-text text-muted">Базовая стоимость изменения,руб:</small>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control sizeCostWidthInput" id="sizeOfTorificationWidth"
+                                   placeholder="0">
+                            <small class="form-text text-muted">Шаг торификации,мм:</small>
+                        </div>
+                        <div class="col-3">
+                            <input type="number" class="form-control sizeCostHeightInput"
+                                   id="costSizeOfTorificationWidth" placeholder="0">
+                            <small class="form-text text-muted">стимость за шаг торификации,руб:</small>
+                        </div>
+                    </div>
+                    <label for="sizeCostsettingDiv4">Высота:</label>
+                    <div class="row sizeCostLine" id="sizeCostsettingDiv4" data="1">
+                        <div class="col-3">
+                            <input type="number" class="form-control sizeCostWidthInput" id="costOfChangeHeight"
+                                   placeholder="0" disabled>
+                            <small class="form-text text-muted">Базовая стоимость изменения,руб:</small>
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control sizeCostWidthInput" id="sizeOfTorificationHeight"
+                                   placeholder="0">
+                            <small class="form-text text-muted">Шаг торификации,мм:</small>
+                        </div>
+                        <div class="col-3">
+                            <input type="number" class="form-control sizeCostHeightInput"
+                                   id="costSizeOfTorificationHeight" placeholder="0">
+                            <small class="form-text text-muted">стимость за шаг торификации,руб:</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!--deepnessDoor-->
+                <div id="deepnessDoorDiv">
+                    <label for="deepnessDoorInput0">глубина:</label>
+                    <div class="row" id="deepnessDoorLineDiv0">
+                        <div class="col-md-6 mb-3" id="deepnessDoorLineSelect0">
+                            <input type="number" class="form-control deepnessDoorInput" id="deepnessDoorInput0" data="0"
+                                   placeholder="глубина">
+                        </div>
+                        <div class="col-2" id="deepnessDoorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="deepnessDoorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="deepnessDoorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input deepnessDoorLineCheckbox"
+                                   id="deepnessDoorLineCheckbox0">
+                            <label class="custom-control-label" for="deepnessDoorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--thicknessDoor-->
+                <div id="thicknessDoorLeafDiv">
+                    <label for="thicknessDoorLeafInput0">толщина полотна:</label>
+                    <div class="row" id="thicknessDoorLineDiv0">
+                        <div class="col-md-6 mb-3" id="thicknessDoorLeafLineSelect0">
+                            <input class="form-control thicknessDoorLeafInput" id="thicknessDoorLeafInput0" data="0"
+                                   placeholder="толщина полотна">
+                        </div>
+                        <div class="col-2" id="thicknessDoorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="thicknessDoorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="thicknessDoorLeafLineSwitch0">
+                            <input type="checkbox" class="custom-control-input thicknessDoorLeafLineCheckbox"
+                                   id="thicknessDoorLeafLineCheckbox0">
+                            <label class="custom-control-label" for="thicknessDoorLeafLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+                <h4 class="chapter">Цвета</h4>
+
+            </button>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+
+                <!--COLOR-->
+                <div id="colorsDiv">
+                    <label for="colorsSelect0">цвет стандарт:</label>
+                    <div class="row" id="colorsLineDiv0">
+                        <div class="col-md-6 mb-3" id="colorsLineSelect0">
+                            <select class="form-control colorsSelect" id="colorsSelect0" data="0" толщина полотна>
+                            </select>
+                        </div>
+                        <div class="col-2" id="colorsCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб" id="colorsCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="colorsLineSwitch0">
+                            <input type="checkbox" class="custom-control-input colorsLineCheckbox"
+                                   id="colorsLineCheckbox0">
+                            <label class="custom-control-label" for="colorsLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <!--COLOR DESIGN-->
+                <div id="DesignDiv">
+                    <label for="designSelect0">дизайн двери</label>
+                    <div class="row" id="designLineDiv0">
+                        <div class="col-md-6 mb-3" id="designLineSelect0">
+                            <select class="form-control designSelect" id="designSelect0" data="0" толщина полотна>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+
+                <h4 class="chapter">внутреняя панель</h4>
+
+            </button>
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <!--shield color-->
+                <div id="shieldColorDiv">
+                    <label for="shieldColorSelect0">цвет накладки:</label>
+                    <div class="row" id="shieldColorLineDiv0">
+                        <div class="col-md-6 mb-3" id="shieldColorLineSelect0">
+                            <select class="form-control shieldColorSelect" id="shieldColorSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="shieldColorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="shieldColorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="shieldColorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input shieldColorLineCheckbox"
+                                   id="shieldColorLineCheckbox0">
+                            <label class="custom-control-label" for="shieldColorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <!--shield design-->
+                <div id="shieldDesignDiv">
+                    <label for="shieldDesignSelect0">рисунок фрезеровки:</label>
+                    <div class="row" id="shieldDesignLineDiv0">
+                        <div class="col-md-6 mb-3" id="shieldDesignLineSelect0">
+                            <select class="form-control shieldDesignSelect" id="shieldDesignSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="shieldDesignCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="shieldDesignCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="shieldDesignLineSwitch0">
+                            <input type="checkbox" class="custom-control-input shieldDesignLineCheckbox"
+                                   id="shieldDesignLineCheckbox0">
+                            <label class="custom-control-label" for="shieldDesignLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+
+                <h4 class="chapter">Фурнитура</h4>
+
+            </button>
+
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+
+                <!--topLock-->
+                <div id="topLockDiv">
+                    <label for="topLockSelect0">веерхний замок:</label>
+                    <div class="row" id="topLockLineDiv0">
+                        <div class="col-md-6 mb-3" id="topLockLineSelect0">
+                            <select class="form-control topLockSelect" id="topLockSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="topLockCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="topLockCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="topLockLineSwitch0">
+                            <input type="checkbox" class="custom-control-input topLockLineCheckbox"
+                                   id="topLockLineCheckbox0">
+                            <label class="custom-control-label" for="topLockLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--lowerLock-->
+                <div id="lowerLockDiv">
+                    <label for="lowerLockSelect0">нижний замок:</label>
+                    <div class="row" id="lowerLockLineDiv0">
+                        <div class="col-md-6 mb-3" id="lowerLockLineSelect0">
+                            <select class="form-control lowerLockSelect" id="lowerLockSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="lowerLockCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="lowerLockCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="lowerLockLineSwitch0">
+                            <input type="checkbox" class="custom-control-input topLockLineCheckbox"
+                                   id="lowerLockLineCheckbox0">
+                            <label class="custom-control-label" for="lowerLockLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--lockCylinder-->
+                <div id="lockCylinderDiv">
+                    <label for="lockCylinderSelect0">цилиндр замка:</label>
+                    <div class="row" id="lockCylinderLineDiv0">
+                        <div class="col-md-6 mb-3" id="lockCylinderLineSelect0">
+                            <select class="form-control lockCylinderSelect" id="lockCylinderSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="lockCylinderCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="lockCylinderCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="lockCylinderLineSwitch0">
+                            <input type="checkbox" class="custom-control-input lockCylinderLineCheckbox"
+                                   id="lockCylinderLineCheckbox0">
+                            <label class="custom-control-label" for="lockCylinderLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--handle-->
+                <div id="handleDiv">
+                    <label for="handleSelect0">ручка:</label>
+                    <div class="row" id="handleLineDiv0">
+                        <div class="col-md-6 mb-3" id="handleLineSelect0">
+                            <select class="form-control handleSelect" id="handleSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="handleCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб" id="handleCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="handleLineSwitch0">
+                            <input type="checkbox" class="custom-control-input handleLineCheckbox"
+                                   id="handleLineCheckbox0">
+                            <label class="custom-control-label" for="handleLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--topInLockDecor-->
+                <div id="topInLockDecorDiv">
+                    <label for="topInLockDecorSelect0">внутреная накладка верхнего замка:</label>
+                    <div class="row" id="topInLockDecorLineDiv0">
+                        <div class="col-md-6 mb-3" id="topInLockDecorLineSelect0">
+                            <select class="form-control topInLockDecorSelect" id="topInLockDecorSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="topInLockDecorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="topInLockDecorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="topInLockDecorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input topInLockDecorLineCheckbox"
+                                   id="topInLockDecorLineCheckbox0">
+                            <label class="custom-control-label" for="topInLockDecorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--topOutLockDecor-->
+                <div id="topOutLockDecorDiv">
+                    <label for="topOutLockDecorSelect0">внешная накладка верхнего замка:</label>
+                    <div class="row" id="topOutLockDecorLineDiv0">
+                        <div class="col-md-6 mb-3" id="topOutLockDecorLineSelect0">
+                            <select class="form-control topOutLockDecorSelect" id="topOutLockDecorSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="topOutLockDecorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="topOutLockDecorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="topOutLockDecorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input topOutLockDecorLineCheckbox"
+                                   id="topOutLockDecorLineCheckbox0">
+                            <label class="custom-control-label" for="topOutLockDecorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--lowerInLockDecor-->
+                <div id="lowerInLockDecorDiv">
+                    <label for="lowerInLockDecorSelect0">внешная накладка нижнего замка:</label>
+                    <div class="row" id="lowerInLockDecorLineDiv0">
+                        <div class="col-md-6 mb-3" id="lowerInLockDecorLineSelect0">
+                            <select class="form-control lowerInLockDecorSelect" id="lowerInLockDecorSelect0"
+                                    data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="lowerInLockDecorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="lowerInLockDecorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="lowerInLockDecorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input lowerInLockDecorLineCheckbox"
+                                   id="lowerInLockDecorLineCheckbox0">
+                            <label class="custom-control-label" for="lowerInLockDecorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--lowerOutLockDecor-->
+                <div id="lowerOutLockDecorDiv">
+                    <label for="lowerOutLockDecorSelect0">внутреная накладка нижнего замка:</label>
+                    <div class="row" id="lowerOutLockDecorLineDiv0">
+                        <div class="col-md-6 mb-3" id="lowerOutLockDecorLineSelect0">
+                            <select class="form-control lowerOutLockDecorSelect" id="lowerOutLockDecorSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="lowerOutLockDecorCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="lowerOutLockDecorCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="lowerOutLockDecorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input lowerOutLockDecorLineCheckbox"
+                                   id="lowerOutLockDecorLineCheckbox0">
+                            <label class="custom-control-label" for="lowerOutLockDecorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+
+                <h4 class="chapter">Наличники</h4>
+
+            </button>
+
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+
+                <div id="leftDoorTrimDiv">
+                    <label for="leftDoorTrimSelect0">левый (интервал):</label>
+                    <div class="row" id="leftDoorTrimSizeMaxMinDiv">
+                        <div class="col-3">
+                            <input type="number" class="form-control" id="leftDoorTrimSizeMin" placeholder="min">
+                        </div>
+                        <div class="col-3">
+                            <input type="number" class="form-control" id="leftDoorTrimSizeMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control btn-outline-primary" id="leftDoorTrimSizeDefault"
+                                   placeholder="default">
+                        </div>
+                    </div>
+                    <label for="leftDoorTrimSelect0">левый:</label>
+                    <div class="row" id="leftDoorTrimLineDiv0">
+                        <div class="col-md-6 mb-3" id="leftDoorTrimLineSelect0">
+                            <select class="form-control leftDoorTrimSelect" id="leftDoorTrimSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="leftDoorTrimCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="leftDoorTrimCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="leftDoorTrimLineSwitch0">
+                            <input type="checkbox" class="custom-control-input leftDoorTrimLineCheckbox"
+                                   id="leftDoorTrimLineCheckbox0">
+                            <label class="custom-control-label" for="leftDoorTrimLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="rightDoorTrimDiv">
+                    <label for="rightDoorTrimSelect0">правый (интервал):</label>
+                    <div class="row" id="rightDoorTrimSizeMaxMinDiv">
+                        <div class="col-3">
+                            <input type="number" class="form-control" id="rightDoorTrimSizeMin" placeholder="min">
+                        </div>
+                        <div class="col-3">
+                            <input type="number" class="form-control" id="rightDoorTrimSizeMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control btn-outline-primary" id="rightDoorTrimSizeDefault"
+                                   placeholder="default">
+                        </div>
+                    </div>
+                    <label for="rightDoorTrimSelect0">правый:</label>
+                    <div class="row" id="rightDoorTrimLineDiv0">
+                        <div class="col-md-6 mb-3" id="rightDoorTrimLineSelect0">
+                            <select class="form-control rightDoorTrimSelect" id="rightDoorTrimSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="rightDoorTrimCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="rightDoorTrimCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="rightDoorTrimLineSwitch0">
+                            <input type="checkbox" class="custom-control-input rightDoorTrimLineCheckbox"
+                                   id="rightDoorTrimLineCheckbox0">
+                            <label class="custom-control-label" for="rightDoorTrimLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="topDoorTrimDiv">
+                    <label for="topDoorTrimSelect0">верхний (интервал):</label>
+                    <div class="row" id="topDoorTrimSizeMaxMinDiv">
+                        <div class="col-3">
+                            <input type="number" class="form-control" id="topDoorTrimSizeMin" placeholder="min">
+                        </div>
+                        <div class="col-3">
+                            <input type="number" class="form-control" id="topDoorTrimSizeMax" placeholder="max">
+                        </div>
+                        <div class="col-2">
+                            <input type="number" class="form-control btn-outline-primary" id="topDoorTrimSizeDefault"
+                                   placeholder="default">
+                        </div>
+                    </div>
+                    <label for="topDoorTrimSelect0">верхний:</label>
+                    <div class="row" id="topDoorTrimLineDiv0">
+                        <div class="col-md-6 mb-3" id="topDoorTrimLineSelect0">
+                            <select class="form-control topDoorTrimSelect" id="topDoorTrimSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="col-2" id="topDoorTrimCostLineInput0">
+                            <input type="number" class="form-control" placeholder="стоимость,руб"
+                                   id="topDoorTrimCostInput0">
+                        </div>
+                        <div class="custom-control custom-switch" id="topDoorTrimLineSwitch0">
+                            <input type="checkbox" class="custom-control-input topDoorTrimLineCheckbox"
+                                   id="topDoorTrimLineCheckbox0">
+                            <label class="custom-control-label" for="topDoorTrimLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+
+                <h4 class="chapter">Дополнительные настройки</h4>
+
+            </button>
+
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+
+                <div id="doorstepDiv">
+                    <label for="doorstepSelect0">порог:</label>
+                    <div class="row" id="doorstepLineDiv0">
+                        <div class="col-md-6 mb-3" id="doorstepLineSelect0">
+                            <select class="form-control doorstepSelect" id="doorstepSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="doorstepLineSwitch0">
+                            <input type="checkbox" class="custom-control-input doorstepLineCheckbox"
+                                   id="doorstepLineCheckbox0">
+                            <label class="custom-control-label" for="doorstepLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="stainlessSteelDoorstepDiv">
+                    <label for="stainlessSteelDoorstepSelect0">порог нержавейка:</label>
+                    <div class="row" id="stainlessSteelDoorstepLineDiv0">
+                        <div class="col-md-6 mb-3" id="stainlessSteelDoorstepLineSelect0">
+                            <select class="form-control stainlessSteelDoorstepSelect" id="stainlessSteelDoorstepSelect0"
+                                    data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="stainlessSteelDoorstepLineSwitch0">
+                            <input type="checkbox" class="custom-control-input stainlessSteelDoorstepLineCheckbox"
+                                   id="stainlessSteelDoorstepLineCheckbox0">
+                            <label class="custom-control-label"
+                                   for="stainlessSteelDoorstepLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="firstSealingLineDiv">
+                    <label for="firstSealingLineSelect0">первая линия уплотнения:</label>
+                    <div class="row" id="firstSealingLineLineDiv0">
+                        <div class="col-md-6 mb-3" id="firstSealingLineLineSelect0">
+                            <select class="form-control firstSealingLineSelect" id="firstSealingLineSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="firstSealingLineLineSwitch0">
+                            <input type="checkbox" class="custom-control-input firstSealingLineLineCheckbox"
+                                   id="firstSealingLineLineCheckbox0">
+                            <label class="custom-control-label" for="firstSealingLineLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="secondSealingLineDiv">
+                    <label for="secondSealingLineSelect0">вторая линия уплотнения:</label>
+                    <div class="row" id="secondSealingLineLineDiv0">
+                        <div class="col-md-6 mb-3" id="secondSealingLineLineSelect0">
+                            <select class="form-control secondSealingLineSelect" id="secondSealingLineSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="secondSealingLineLineSwitch0">
+                            <input type="checkbox" class="custom-control-input secondSealingLineLineCheckbox"
+                                   id="secondSealingLineLineCheckbox0">
+                            <label class="custom-control-label" for="secondSealingLineLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="thirdSealingLineDiv">
+                    <label for="thirdSealingLineSelect0">третья линия уплотнения:</label>
+                    <div class="row" id="thirdSealingLineLineDiv0">
+                        <div class="col-md-6 mb-3" id="thirdSealingLineLineSelect0">
+                            <select class="form-control thirdSealingLineSelect" id="thirdSealingLineSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="thirdSealingLineLineSwitch0">
+                            <input type="checkbox" class="custom-control-input thirdSealingLineLineCheckbox"
+                                   id="thirdSealingLineLineCheckbox0">
+                            <label class="custom-control-label" for="thirdSealingLineLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+
+                <h4 class="chapter">Дополнительная фурнитура</h4>
+
+            </button>
+
+            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+
+                <!--closer-->
+                <div id="closerDiv">
+                    <label for="closerSelect0">доводчик:</label>
+                    <div class="row" id="closerLineDiv0">
+                        <div class="col-md-6 mb-3" id="closerLineSelect0">
+                            <select class="form-control closerSelect" id="closerSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="closerLineSwitch0">
+                            <input type="checkbox" class="custom-control-input closerLineCheckbox"
+                                   id="closerLineCheckbox0">
+                            <label class="custom-control-label" for="closerLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--endDoorLock-->
+                <div id="endDoorLockDiv">
+                    <label for="endDoorLockSelect0">торцевой шпингалет:</label>
+                    <div class="row" id="endDoorLockLineDiv0">
+                        <div class="col-md-6 mb-3" id="endDoorLockLineSelect0">
+                            <select class="form-control endDoorLockSelect" id="endDoorLockSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="endDoorLockLineSwitch0">
+                            <input type="checkbox" class="custom-control-input endDoorLockLineCheckbox"
+                                   id="endDoorLockLineCheckbox0">
+                            <label class="custom-control-label" for="endDoorLockLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                    data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+
+                <h4 class="chapter">Стекло</h4>
+
+            </button>
+
+            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+
+                <!--typeDoorGlass-->
+                <div id="typeDoorGlassDiv">
+                    <label for="typeDoorGlassSelect0">тип стекла:</label>
+                    <div class="row" id="typeDoorGlassLineDiv0">
+                        <div class="col-md-6 mb-3" id="typeDoorGlassLineSelect0">
+                            <select class="form-control typeDoorGlassSelect" id="typeDoorGlassSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="typeDoorGlassLineSwitch0">
+                            <input type="checkbox" class="custom-control-input typeDoorGlassLineCheckbox"
+                                   id="typeDoorGlassLineCheckbox0">
+                            <label class="custom-control-label" for="typeDoorGlassLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <!--toning-->
+                <div id="toningDiv">
+                    <label for="toningSelect0">тонировка:</label>
+                    <div class="row" id="toningLineDiv0">
+                        <div class="col-md-6 mb-3" id="toningLineSelect0">
+                            <select class="form-control toningSelect" id="toningSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="toningLineSwitch0">
+                            <input type="checkbox" class="custom-control-input toningLineCheckbox"
+                                   id="toningLineCheckbox0">
+                            <label class="custom-control-label" for="toningLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+                <!--armor-->
+                <div id="armorDiv">
+                    <label for="armorSelect0">броня:</label>
+                    <div class="row" id="armorLineDiv0">
+                        <div class="col-md-6 mb-3" id="armorLineSelect0">
+                            <select class="form-control armorSelect" id="armorSelect0" data="0">
+                            </select>
+                        </div>
+                        <div class="custom-control custom-switch" id="armorLineSwitch0">
+                            <input type="checkbox" class="custom-control-input armorLineCheckbox"
+                                   id="armorLineCheckbox0">
+                            <label class="custom-control-label" for="armorLineCheckbox0">default</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

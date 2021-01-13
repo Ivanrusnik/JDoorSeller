@@ -3,28 +3,29 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>door seller</title>
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <!-- Подключаем Bootstrap CSS -->
     <link type="text/css" rel="stylesheet" href="css/bootstrap-4.3.1css/bootstrap.min.css">
-    <!-- Custom styles for this template -->
-    <link type="text/css" href="css/jumbotron.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/logoSett.css" />
+    <link rel="stylesheet" type="text/css" href="css/displayCss.css" />
 </head>
 <body>
-<nav class="navbar navbar-static-top navbar-dark bg-inverse">
-    <a class="navbar-brand" th:href="@{/}">DOOR SELLER</a>
-    <ul class="nav navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/orders}">заказы </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/setting}">настройки</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/logout}">выйти</a>
-        </li>
-    </ul>
-</nav>
+    <div class="top_head">
+        <div class="header_logo">
+            <a th:href="@{/}" class="logo_text">Asgard</a>
+        </div>
+        <div class="header_home" >
+            <a th:href="@{/orders}" class="logo_home">заказы</a>
+        </div>
+        <div class="header_home" >
+            <a th:href="@{/setting}" class="logo_home">настройки</a>
+        </div>
+        <div class="header_home" >
+            <a th:href="@{/logout}" class="logo_home">выйти</a>
+        </div>
+    </div>
+    <br>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
@@ -35,18 +36,18 @@
     </div>
 </div>
 
-<div class="container">
-    <!-- Example row of columns -->
+    <!--
+     <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2>МЕГАТРОН</h2>
+            <h2>Мегатрон</h2>
             <p>Двери из титановый сплавов, и астероидного металла.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <p><a class="btn btn-secondary" th:href="@{/calculation}" role="button">конфигуратор »</a></p>
         </div>
         <div class="col-md-4">
             <h2>Центурион</h2>
             <p>Двери всемирноизвестной торговой марки  Центурион.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <p><a class="btn btn-secondary" th:href="@{/calculation}" role="button">конфигуратор »</a></p>
         </div>
         <div class="col-md-4">
             <h2>Individuall</h2>
@@ -56,7 +57,7 @@
 
 
     </div>
-
+    -->
     <hr>
 
     <footer>

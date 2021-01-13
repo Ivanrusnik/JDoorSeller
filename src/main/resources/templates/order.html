@@ -4,125 +4,109 @@
 <head>
 	<title>door seller</title>
 	<link rel="stylesheet" type="text/css" href="css/logoSett.css" />
+	<link rel="stylesheet" type="text/css" href="css/displayCss.css" />
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/buttons-utils/buttons-manager.class.js"></script>
+	<script type="text/javascript" src="js/line-utils/line-editor.class.js"></script>
 	<script type="text/javascript" src="js/orderScript.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/ios_checkbox.css" />
+	<!-- Подключаем Bootstrap CSS -->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap-4.3.1css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="top_head">
-	<div class="header_logo" >
-		<a th:href="@{/}" class="logo_text">door seller</a>
-	</div>
-	<div class="header_home" >
-		<span class="head_button" id="saveOrderAndShutDown">сохранить и закрыть</span>
-	</div>
-	<div class="header_home" >
-		<span class="head_button" id="saveOrder">сохранить</span>
-	</div>
-	<div class="header_home" >
-		<span class="head_button" id="deleteOrder">удалить</span>
-	</div>
-	<div class="header_home">
-		<span  class="head_button" id ="print">печать заказа</span>
-	</div>
-	<div class="header_home">
-		<span  class="head_button" id ="printDoors">печать дверей</span>
-	</div>
+<div class="container-fluid" id="intro-dm">
+	<a th:href="@{/}"><img src="images/Header_widht_1300_002 ltl.jpg"></a>
+</div>
 </div>
 
 <div class="container_main_order">
-	<span >№:</span>
-	<span   id="order_id" th:text="${orederId}"></span>
-	<div class="order_header">
-		<div class="order_headerL">
 
-			<div class="headerLine">
-				<span class="nameheaderLine">организация:</span><br>
-				<input  id="company" class="input" type="text" value="" placeholder="организация">
-			</div>
-			<div class="headerLine">
-				<span class="nameheaderLine">контрагент:</span><br>
-				<input  id="partner" class="input" type="text" value="" placeholder="контрагент">
-			</div>
-			<div class="headerLine">
-				<span class="nameheaderLine">дата заказа:</span><br>
-				<input  id="data" class="inputData" type="date"  placeholder="дата заказа">
-			</div>
-			<div class="headerLine">
-				<span class="nameheaderLine">дата готовности:</span><br>
-				<input  id="releasDate" class="inputData" type="date"  placeholder="дата готовности">
-			</div>
+	<h1 class="display-4" id ="orderIdName">Заказ</h1>
+    <span class="ghost" id="order_id" th:text="${orderId}"></span>
+
+
+	<div class="container_main_order">
+
+		<div class="order_button_div">
+			<button type="button" class="btn btn-dark" id="toСlose" >Закрыть</button>
+			<button type="button" class="btn btn-dark different_availability ready_availability" id="saveOrderAndShutDown" >Cохранить и закрыть</button>
+			<button type="button" class="btn btn-dark different_availability ready_availability" id="saveOrder" >Cохранить</button>
+			<button type="button" class="btn btn-dark different_availability" id="deleteOrder" >Удалить</button>
+			<button type="button" class="btn btn-dark" id="print" >Печать заказа</button>
+			<button type="button" class="btn btn-dark" id="printDoors">Печать дверей</button>
+			<button type="button" class="btn btn-dark" id="factoryOder">Заказ на завод</button>
 		</div>
-		<div class="order_headerR">
-			<div class="checkbox" >
-				<span  id="username" th:text="${username}"></span><br>
-			</div>
-			<div class="checkbox"   id="inWork" >
-				<div class="left_cell_checkbox">
-					<a  class="vertical_menu_button_left" id="nemeproductionStart" href="#">в работе:</a>
+
+		<div class="ghost orderToFactory_button_div" >
+			<button type="button" class="btn btn-warning" id="goToWork" >Запустить в производство!</button>
+			<button type="button" class="btn btn-dark" id="backToOrder" >Вернутся к закзау</button>
+		</div>
+
+		<div class="order_header">
+			<div class="row ">
+				<div class="col-md-6 mb-3">
+					<label for="status">статус заказа</label>
+					<select class="custom-select d-block w-100" id="status" required="">
+					</select>
 				</div>
-				<div align="right" class="right_cell_checkbox">
-					<div class="toggles">
-						<input type="checkbox" name="productionStart" id="productionStart" class="ios-toggle" />
-						<label for="productionStart" class="checkbox-label"></label>
-					</div>
+				<div class="col">
+					<label for="data">дата создания заказа:</label>
+					<input type="date" class="form-control" id="data" placeholder="" value="" required="">
 				</div>
-			</div>
-			<div class="checkbox"    >
-				<div class="left_cell_checkbox">
-					<a  class="vertical_menu_button_left" id="nemeinTheManufacturerDatabase" href="#">в базе производителя:</a>
+				<div class="col">
+					<label for="data">дата запуска в работу:</label>
+					<input type="date" class="form-control" id="Startdata" placeholder="" value="" required="">
 				</div>
-				<div align="right" class="right_cell_checkbox">
-					<div class="toggles">
-						<input type="checkbox" name="inTheManufacturerDatabase" id="inTheManufacturerDatabase"  class="ios-toggle" />
-						<label for="inTheManufacturerDatabase" class="checkbox-label"></label>
-					</div>
+				<div class="col">
+					<label for="releasDate">дата готовности:</label>
+					<input type="date" class="form-control" id="releasDate" placeholder="" value="" required="">
 				</div>
 			</div>
-		</div>
-	</div>
+			<div class="row ">
 
-	<div class="button_menu">
-		<div class="div_order_management">
-			<span class="button_cap_menu" id ="addDoor">+ новая дверь</span>
-		</div>
-		<div class="div_order_management">
-			<span class="button_cap_menu" id ="toChange">изменить</span>
-		</div>
-		<div class="div_order_management">
-			<span class="button_cap_menu" id ="delete">удалить</span>
-		</div>
-	</div>
+				<div class="col">
+					<label for="partner">контрагент:</label>
+					<input type="text" class="form-control" id="partner" placeholder="контрагент" value="" required="">
+				</div>
+				<div class="col">
+					<label for="company">организация:</label>
+					<input type="text" class="form-control" id="company" placeholder="организация" value="" required="">
+				</div>
 
-	<div class="data-Table">
-		<table class="Table">
-			<tr>
-				<th>id</th>
-				<th>наименование</th>
-				<th>тип двери</th>
-				<th>металл</th>
-				<th>цвет</th>
-				<th>цена</th>
-			</tr>
-			<tr th:each="accountInfo : ${accountInfos}">
-				<td th:utext="${accountInfo.id}">..</td>
-				<td th:utext="${accountInfo.name}">..</td>
-				<td th:utext="${accountInfo.doorType}">..</td>
-				<td th:utext="${accountInfo.metal}">..</td>
-				<td th:utext="${accountInfo.doorColor}">..</td>
-				<td th:utext="${accountInfo.price}">..</td>
-			</tr>
+			</div>
 
-		</table>
-	</div>
-	<div class="totalOrder">
-		<span>ИТОГО:</span>
-        <span id="total"></span>
-	</div>
-	<div class="order_header">
-		<span class="nameheaderLine">комменткрий:</span>
-		<input  id="comment" class="input" type="text" value="" placeholder="комменткрий">
+		</div>
+
+		<div class="order_button_div">
+			<button type="button" class="btn btn-primary different_availability" id="addDoor">Добавить</button>
+			<button type="button" class="btn btn-primary " id="toChange">Изменить</button>
+			<button type="button" class="btn btn-primary different_availability" id="delete">удалить</button>
+        </div>
+
+		<div class="data-Table">
+			<table class="Table">
+				<tr>
+
+				</tr>
+				<tr >
+
+				</tr>
+			</table>
+		</div>
+
+		<div class="totalOrder">
+			<span>ИТОГО:</span>
+			<span id="total"></span>
+			<span class="orderToFactory_button_div ghost"> profit:</span>
+			<span class="ghost" id="totalProfit"></span>
+		</div>
+
+		<div class="mb-3">
+			<label for="comment">комменткрий: </label>
+			<input type="text" class="form-control" id="comment" placeholder="комментарий">
+		</div>
 	</div>
 </div>
 

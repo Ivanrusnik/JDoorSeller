@@ -1,7 +1,5 @@
 package com.jds.model.cutting;
 
-import com.jds.model.DoorPart;
-
 import java.util.*;
 
 public class SheetCutting {

@@ -1,41 +1,44 @@
-.mainDiv{
-font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+.mainDiv {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 }
-h1{
-display:inline-block;
+h1 {
+  display: inline-block;
 }
 table {
-font-size: 12px;
-border-collapse: collapse;
-text-align: center;
-border: 2px solid black;
+  font-size: 12px;
+  border-collapse: collapse;
+  text-align: center;
+  border: 2px solid black;
 }
-.data-Table{
-width:800px;	
+.data-Table {
+  width: 800px;
 }
-.lux{
-width: 100%;
+.lux {
+  width: 100%;
 }
-th, td:first-child {
-color: black;
-padding: 10px 20px;
+th,
+td:first-child {
+  color: black;
+  padding: 10px 20px;
 }
-th, td {
-border-style: solid;
-border-width: 0 1px 1px 0;
-border-color: black;
+th,
+td {
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-color: black;
 }
-th:first-child, td:first-child {
-text-align: left;
+th:first-child,
+td:first-child {
+  text-align: left;
 }
-.total{
-width:800px;
-text-align:right;
+.total {
+  width: 800px;
+  text-align: right;
 }
-.customer_signature{
-left:500px;
-position:absolute;
+.customer_signature {
+  left: 500px;
+  position: absolute;
 }
-.ot{
-    margin: 10px;
+.ot {
+  margin: 10px;
 }

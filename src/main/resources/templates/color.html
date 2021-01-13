@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap-4.3.1css/bootstrap.min.css">
+
+    <!-- your personal CSS -->
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/color.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/logoSett.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/displayCss.css"/>
+
+</head>
+<body>
+
+<div class="top_head">
+    <div class="container-fluid" id="intro-dm">
+        <a th:href="@{/}"><img src="../images/Header_widht_1300_002 ltl.jpg"></a>
+    </div>
+</div>
+
+<div class="top_head">
+    <div class="form-group">
+
+        <h1 class="display-4">Цвет</h1>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" id="save">сохранить</button>
+                <button type="button" class="btn btn-primary" id="close">закрыть</button>
+                <button type="button" class="btn btn-primary" id="delete">удалить</button>
+            </div>
+        </div>
+
+        <h4 class="chapter">id</h4>
+        <br>
+        <!--id-and-id-manufacturer-program-->
+        <div class="form-group">
+            <div class="row">
+                <!--id-->
+                <div class="col disabled">
+                    <label for="id">Номер:</label>
+                    <input type="text" class="form-control" id="id" aria-describedby="idHelp"
+                           placeholder="Enter id">
+                    <small id="idHelp" class="form-text text-muted">id фурнитуры, уникальный номер фурнитуры.</small>
+                </div>
+                <!--id-manufacturer-program-->
+                <div class="col">
+                    <label for="idManufacturerProgram">Номер производителя:</label>
+                    <input type="text" class="form-control" id="idManufacturerProgram" aria-describedby="idManHelp"
+                           placeholder="Enter id">
+                    <small id="idManufacturerProgramHelp" class="form-text text-muted">id фурнитуры, уникальный номер
+                        фурнитуры в
+                        программе завода.</small>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="chapter">Основные настройки</h4>
+        <br>
+
+        <div class="form-group">
+
+
+            <!--name-->
+            <div class="col-md-6 mb-3">
+                <label for="name">Наименование:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                       placeholder="Enter name">
+                <small id="nameHelp" class="form-text text-muted">Наименование в виде толщины листа метала.</small>
+            </div>
+
+            <!--type-of-image-->
+            <div class="col-md-6 mb-3">
+                <label for="typeOfImage">Тип изображения:</label>
+                <select class="form-control" id="typeOfImage" Enter type>
+                </select>
+                <small id="typeOfImageHelp" class="form-text text-muted">указывает принодлежность к :двери, МДФ, рисунок
+                    фрезеровки МДФ.</small>
+            </div>
+
+            <!--type-of-door-color-->
+            <div class="col-md-6 mb-3">
+                <label for="typeOfDoorColor">Тип цвета двери:</label>
+                <select class="form-control" id="typeOfDoorColor" Enter type>
+                </select>
+                <small id="typeHelp" class="form-text text-muted">только для цветов дверей.</small>
+            </div>
+
+            <!--color contains design-->
+            <div class="col-md-6 mb-3">
+                <div class="custom-control custom-switch" id="containsDesignSwitch">
+                    <input type="checkbox" class="custom-control-input" id="containsDesign">
+                    <label class="custom-control-label" for="containsDesign">содержит дизайн</label>
+                </div>
+                <small class="form-text text-muted">для цветов щита со встроиным дизайном, нельзя выбрать другой дизайн
+                    к этому щиту.
+                    при создании двери с этим признаком поле выбора дизайна блокируктся </small>
+            </div>
+
+            <!--color contains glass-->
+            <div class="col-md-6 mb-3" id="containsGlassDiv">
+                <div class="custom-control custom-switch" id="containsGlassSwitch">
+                    <input type="checkbox" class="custom-control-input" id="containsGlass">
+                    <label class="custom-control-label" for="containsGlass">содержит стекло</label>
+                </div>
+                <small class="form-text text-muted">для цветов щита возможность выбора стекла </small>
+            </div>
+
+            <!--smooth-->
+            <div class="col-md-6 mb-3">
+                <div class="custom-control custom-switch" id="smoothSwitch">
+                    <input type="checkbox" class="custom-control-input topLockLineCheckbox" id="smooth">
+                    <label class="custom-control-label" for="smooth">Гладкая</label>
+                </div>
+                <small id="isUsedHelp" class="form-text text-muted">признак для расчетов стоимости и работ.</small>
+            </div>
+
+        </div>
+
+        <h4 class="chapter">Отображение</h4>
+        <br>
+
+        <div class="form-group">
+            <!--picturePath-->
+
+            <div class="col-md-6 mb-3" id="containsDesignGlass">
+                <select class="form-control" id="picturePathDesign" Enter type></select>
+                <small class="form-text text-muted">выберище щит для стекла</small>
+                <br>
+                <img id="picturePathDesign_img" src="...">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="picturePath">Картинка:</label>
+                <select class="form-control" id="picturePath" Enter type></select>
+                <small class="form-text text-muted">цвет для выбора и отображения в заказах.</small>
+                <br>
+                <img id="picturePath_img" src="...">
+                <small class="form-text text-muted"><strong>!ВНИМАНИЕ: по умолчанию картинка должна быть под ручку
+                    справа</strong></small>
+            </div>
+        </div>
+
+
+        <h4 class="chapter">Настройки стоимости</h4>
+        <br>
+
+        <div class="form-group">
+            <!--price-->
+            <div class="col-md-6 mb-3">
+                <label for="pricePaintingMeterOfSpace">Цена:</label>
+                <input type="number" class="form-control" id="pricePaintingMeterOfSpace" aria-describedby="priceHelp"
+                       placeholder="Enter price">
+                <small id="priceHelp" class="form-text text-muted">Цена за метр квадратный.</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

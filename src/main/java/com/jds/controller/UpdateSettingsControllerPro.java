@@ -2,32 +2,49 @@ package com.jds.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jds.dao.MainDAO;
-import com.jds.entity.*;
+import com.jds.dao.repository.MainDAO;
+import com.jds.dao.repository.MaterialsRepository;
+import com.jds.dao.repository.MetalRepository;
+import com.jds.dao.entity.*;
+import com.jds.service.ColorService;
 import com.jds.service.MaineService;
+import com.jds.service.MaterialsService;
+import com.jds.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.StringReader;
-import java.util.List;
 
 
 @Controller
 public class UpdateSettingsControllerPro {
 
     @Autowired
-    MainDAO mainDAO;
+    private MainDAO mainDAO;
 
     @Autowired
-    MaineService service;
+    private MaterialsRepository materialsDAO;
+
+    @Autowired
+    private MaineService service;
+
+    @Autowired
+    private MaterialsService materialsService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private MetalRepository metalDAO;
+
+    @Autowired
+    private ColorService colorService;
 
     @PostMapping(value = "/update/doorclass", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateDoorClass(@RequestParam(required = false) String kay,
-                                  @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateDoorClass(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
@@ -41,7 +58,7 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/limitationdoor", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateLimitationDoor(@RequestParam("request") String data,@RequestBody LimitationDoor dataJson) {
+    public String updateLimitationDoor(@RequestParam("request") String data, @RequestBody LimitationDoor dataJson) {
 
         mainDAO.saveOrUpdateLimitationDoor(dataJson);
 
@@ -50,8 +67,7 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/doortype", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateDoorType(@RequestParam(required = false) String kay,
-                                 @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateDoorType(@RequestParam(required = false) String dataJson) throws Exception {
 
         StringReader reader = new StringReader(dataJson);
         ObjectMapper mapper = new ObjectMapper();
@@ -64,8 +80,7 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/sizeofdoorparts", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateSizeOfDoorParts(@RequestParam(required = false) String kay,
-                                        @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateSizeOfDoorParts(@RequestParam(required = false) String dataJson) throws Exception {
 
         //!!! make sure there are no lines with the same name
         StringReader reader = new StringReader(dataJson);
@@ -79,23 +94,21 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/metal", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateMetal(@RequestParam(required = false) String kay,
-                              @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateMetal(@RequestParam(required = false) String dataJson) throws Exception {
 
 
-            StringReader reader = new StringReader(dataJson);
-            ObjectMapper mapper = new ObjectMapper();
+        StringReader reader = new StringReader(dataJson);
+        ObjectMapper mapper = new ObjectMapper();
 
-            Metal metal = mapper.readValue(reader, Metal.class);
-            mainDAO.saveMetal(metal);
+        Metal metal = mapper.readValue(reader, Metal.class);
+        metalDAO.saveMetal(metal);
 
         return "jr";
     }
 
     @PostMapping(value = "/update/Furniture", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateFurniture(@RequestParam(required = false) String kay,
-                                  @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateFurniture(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
@@ -109,24 +122,21 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/doorcolors", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateDoorColors(@RequestParam(required = false) String kay,
-                                   @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateDoorColors(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
         ObjectMapper mapper = new ObjectMapper();
 
-        DoorColors doorColors = mapper.readValue(reader, DoorColors.class);
-        service.saveDoorColors(doorColors);
-
+        ImageEntity doorColors = mapper.readValue(reader, ImageEntity.class);
+        colorService.saveColor(doorColors);
 
         return "jr";
     }
 
     @PostMapping(value = "/update/bendsetting", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateBendSetting(@RequestParam(required = false) String kay,
-                                   @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateBendSetting(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
@@ -141,8 +151,7 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/salaryconstants", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateSalaryConstants(@RequestParam(required = false) String kay,
-                                    @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateSalaryConstants(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
@@ -156,8 +165,7 @@ public class UpdateSettingsControllerPro {
 
     @PostMapping(value = "/update/salarysetting", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateSalarySetting(@RequestParam(required = false) String kay,
-                                        @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateSalarySetting(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
@@ -169,26 +177,31 @@ public class UpdateSettingsControllerPro {
         return "jr";
     }
 
-
-    @PostMapping(value = "/loading/orders", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public List<DoorsОrder> getOrders(@RequestParam(required = false) String kay) throws Exception {
-
-        return service.getOrders();
-    }
-
-
     @PostMapping(value = "/update/specificationsetting", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String updateSpecificationSetting(@RequestParam(required = false) String kay,
-                                        @RequestParam(required = false) String dataJson) throws Exception {
+    public String updateSpecificationSetting(@RequestParam(required = false) String dataJson) throws Exception {
 
 
         StringReader reader = new StringReader(dataJson);
         ObjectMapper mapper = new ObjectMapper();
 
         SpecificationSetting setting = mapper.readValue(reader, SpecificationSetting.class);
-        service.saveSpecificationSetting(setting);
+        materialsService.saveSpecificationSetting(setting);
+
+        return "jr";
+    }
+
+    @PostMapping(value = "/update/specification", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String setSpecification(@RequestParam(required = false) String dataJson) throws Exception {
+
+        StringReader reader = new StringReader(dataJson);
+        ObjectMapper mapper = new ObjectMapper();
+
+        LineSpecification spec = mapper.readValue(reader, LineSpecification.class);
+
+
+        LineSpecification lineSpecification = materialsDAO.saveLineSpecification(spec);
 
         return "jr";
     }

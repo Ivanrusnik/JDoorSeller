@@ -1,91 +1,218 @@
-.picture_doorL{
-    display:inline-block;
-    position:relative;
-    top:60px;
-    left:20px;
+.picture_doorL {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: 20px;
+  margin: 5px;
 }
-.picture_doorR{
-    display:inline-block;
-    position:relative;
-    top:60px;
-    left:25px;
+.picture_doorR {
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  left: 20px;
+  margin: 5px;
 }
-.opening_side_images{
-    position: absolute;
-    top:0px;
-    left:0px;
+.opening_side_images {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 150;
 }
 
+.fanlight {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.Leaf {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
 /*
 handle
  */
 
-.handle_images{
-    position:absolute;
-    height:40px;
-    width:40px;
+.handle_images {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  z-index: 200;
 }
-.left_side2_handle{
-    top:50%;
-    left:35%;
+.left_side2_handle {
+  top: 50%;
+  left: 35%;
 }
-.rigth_side2_handle{
-    top:50%;
-    right:35%;
+.rigth_side2_handle {
+  top: 50%;
+  right: 35%;
 }
-.left_side_handle{
-    top:50%;
-    left:10%;
+.left_side_handle {
+  top: 48%;
+  left: 12%;
 }
-.rigth_side_handle{
-    top:50%;
-    right:10%;
+.rigth_side_handle {
+  top: 48%;
+  right: 12%;
 }
 
 /*
 closer
  */
-.closer_images{
-    position:absolute;
-    height:20px;
-    width:40px;
-    top:0%;
-    left:50%;
+.closer_images {
+  position: absolute;
+  height: 20px;
+  width: 40px;
+  top: 0%;
+  left: 50%;
 }
 
 /*
 stainlessSteelDoorstep
  */
-.stainlessSteelDoorstepL_images{
-    position:absolute;
-    height:3%;
-    width:91%;
-    left:4.5%;
-    top:96%;
+.stainlessSteelDoorstepL_images {
+  position: absolute;
+  height: 3%;
+  width: 91%;
+  left: 4.5%;
+  top: 96%;
 }
-.stainlessSteelDoorstepR_images{
-    position:absolute;
-    height:1.5%;
-    width:91%;
-    left:4.5%;
-    top:97.8%;
+.stainlessSteelDoorstepR_images {
+  position: absolute;
+  height: 1.5%;
+  width: 91%;
+  left: 4.5%;
+  top: 97.8%;
 }
 
-.sizeDoorSpan{
-    writing-mode:tb-rl;
-    vertical-align:middle;
-    text-align:center;
-    border-right: solid 1px #A9A9A9;
-    border-top: solid 1px #A9A9A9;
-    border-bottom: solid 1px #A9A9A9;
-    vertical-align: top;
+.sizeDoorSpan {
+  writing-mode: tb-rl;
+  vertical-align: middle;
+  text-align: center;
+  border-right: solid 1px #a9a9a9;
+  border-top: solid 1px #a9a9a9;
+  border-bottom: solid 1px #a9a9a9;
+  vertical-align: top;
 }
-.sizeDoorSpanBottom{
-    vertical-align:middle;
-    text-align:center;
-    border-right: solid 1px #A9A9A9;
-    border-left: solid 1px #A9A9A9;
-    border-bottom: solid 1px #A9A9A9;
-    vertical-align: top;
-    position: absolute;
+.sizeDoorSpanBottom {
+  vertical-align: middle;
+  text-align: center;
+  border-right: solid 1px #a9a9a9;
+  border-left: solid 1px #a9a9a9;
+  border-bottom: solid 1px #a9a9a9;
+  vertical-align: top;
+  position: absolute;
+}
+.puffinLeft {
+  background: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-right: 2px dashed #373a3c;
+}
+.puffinUp {
+  background: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-bottom: 2px dashed #373a3c;
+}
+.puffinRight {
+  background: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-left: 2px dashed #373a3c;
+}
+
+.mirrorX {
+  transform: scale(-1, 1);
+}
+
+.logo_brand_images_L{
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  z-index: 200;
+}
+.logo_brand_images_R{
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  z-index: 200;
+}
+
+.hinge_images_R{
+   position: absolute;
+   left: 9.5%;
+  z-index: 200;
+ }
+.hinge_images_L{
+  position: absolute;
+  right: 9.5%;
+  z-index: 200;
+}
+.upper_hinge{
+  top: 10%;
+}
+.middle_hinge{
+  top: 30%;
+}
+.lower_hinge{
+  top: 80%;
+}
+
+.night_lock_images_R{
+  position: absolute;
+  left: 13%;
+  top: 43%;
+  z-index: 200;
+}
+.night_lock_images_L{
+  position: absolute;
+  right: 13%;
+  top: 43%;
+  z-index: 200;
+}
+
+.lock_decor_R{
+  position: absolute;
+  left: 12%;
+}
+.lock_decor_L{
+  position: absolute;
+  right: 12%;
+}
+.top_lock_decor{
+  top: 36%;
+  z-index: 200;
+}
+.lower_lock_decor{
+  top: 55%;
+  z-index: 200;
+}
+
+.shield_color{
+  top: 3.5%;
+  left: 9%;
+  height: 92.5%;
+  width: 82.5%;
+  position: absolute;
+  z-index: 100;
+}
+.shield_design{
+  top: 3.5%;
+  left: 9%;
+  height: 92.5%;
+  width: 82.5%;
+  position: absolute;
+  z-index: 101;
+}
+.shield_glass{
+  top: 3.5%;
+  left: 9%;
+  height: 92.5%;
+  width: 82.5%;
+  position: absolute;
+  z-index: 101;
 }

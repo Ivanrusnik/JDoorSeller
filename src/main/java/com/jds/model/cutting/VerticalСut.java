@@ -1,9 +1,5 @@
 package com.jds.model.cutting;
 
-import com.jds.model.DoorPart;
-
-import java.util.List;
-
 public class VerticalСut {
 
     Boolean full;

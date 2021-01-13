@@ -1,103 +1,117 @@
-
-
 /* ------------------------------------------------ */
 /* top */
 /* ------------------------------------------------ */
 
-.top_head{
-    width:100%;
-    height: 50px;
-    max-width:1300px;
-    margin:0 auto;
+body{
+    cursor: url(/images/Fable_Sword.gif), pointer;
+}
+
+.top_head {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
     position: relative;
 }
 
-.header_logo{
+.header_logo {
     padding: 3px 50px 3px 50px;
-    display:inline-block;
-    height:40px;
+    display: inline-block;
     vertical-align: top;
     color: #373a3c;
-   //border-radius: 5px;
     border-right: 1px solid #373a3c;
 }
 
-.header_home{
+.header_home {
     padding: 12px 10px 0px 10px;
-    display:inline-block;
-    //border-left:solid 1px #191970;
-    height:35px;
+    display: inline-block;
+    height: 35px;
     vertical-align: top;
 }
 
-.logo_text{
-    font-size:30px;
+.logo_text {
+    font-size: 30px;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color:#373a3c;
+    color: #373a3c;
     text-decoration: none;
 }
 
-.logo_home{
-    font-size:18px;
+.logo_home {
+    font-size: 18px;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color:#373a3c;
+    color: #373a3c;
     text-decoration: none;
 
 }
-.head_button{
-    font-size:18px;
+
+.head_button {
+    font-size: 18px;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color:#373a3c;
+    color: #373a3c;
     text-decoration: none;
 }
-.head_button:hover{
-    font-size:18px;
+
+.head_button:hover {
+    font-size: 18px;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color:#373a3c;
+    color: #373a3c;
     text-decoration: none;
-    cursor:pointer;
+    cursor: url(/images/Fable_Sword.gif), pointer;
     border-bottom: 1px solid #373a3c;
 }
 
-.lending_div{
+.lending_div {
 
     padding: 3px 0px 0px 0px;
-    width:100%;
-    max-width:1300px;
-    margin:0 auto;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
 
 }
 
-.lending_text{
+.lending_text {
     padding: 20px 20px 20px 20px;
-    position:absolute;
-    font-size:110px;
-    color:#F0FFF0;
+    position: absolute;
+    font-size: 110px;
+    color: #F0FFF0;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
-.conten_body{
-    max-width:1301px;
-    margin:0 auto;
+.conten_body {
+    max-width: 1301px;
+    margin: 0 auto;
+}
+
+.chapter{
+    background-color: #373a3c;
+    color: white;
+    height:45px;
+    padding-left:10px;
+    margin-bottom: -0.2rem;
+}
+
+h4,
+.h4
+ {
+    line-height: 1.7;
 }
 
 /* ----------------------------------------- */
 /* basement */
 /* ----------------------------------------- */
 
-.basement{
-    background-color:#245882;
-//padding: 3px 3px 3px 50px;
-    width:100%;
-    max-width:1300px;
-    margin:0 auto;
+.basement {
+    background-color: #245882;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
     position: relative;
-    height:70px;
+    height: 70px;
 }
-.basement_text{
+
+.basement_text {
 
     padding: 12px 50px 0px 50px;
-    display:inline-block;
+    display: inline-block;
 
 }
 
@@ -105,38 +119,49 @@
 /* Table */
 /* ------------------------------------------------ */
 
-.data-Table{
+.data-Table {
     top: 5px;
-    left:10px;
-//height:600px;
+    left: 0px;
+
     width: 100%;
-    display:block;
+    display: block;
     position: relative;
-//margin-top:10px;
+
     border-bottom: solid 1px #A9A9A9;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
-Table{
+
+Table {
     width: 100%;
 }
-th{
+
+th {
+    padding: 10px 10px 10px 30px;
+    background-color: #373a3c;
+    color: white;
+}
+
+td {
     padding: 10px 10px 10px 30px;
 }
-td{
-    padding: 10px 10px 10px 30px;
+
+tr:hover {
+    background-color: #D3D3D3;
 }
 
 /* ------------------------------------------------- */
 /* navigation */
 /* ------------------------------------------------- */
 
-.navigation_panel_div{
-    padding:8.7px 0px 0px 0px;
-    height:30px;
+.navigation_panel_div {
+    padding: 8.7px 0px 0px 0px;
+    height: 30px;
+    display: inline-block;
 }
-.navigation_panel{
 
-    color:#245882;
+.navigation_panel {
+
+    color: #245882;
     text-decoration: none;
 
 }
@@ -145,421 +170,496 @@ td{
 /* calculation */
 /* ------------------------------------------------- */
 
-
-
-.container_main{
+.container_main {
     padding: 5px 3px 0px 0px;
-    max-width:1300px;
-    margin:0 auto;
+    max-width: 1300px;
+    margin: 0 auto;
     position: relative;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    //font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     text-decoration: none;
-    color:#000000;
 }
-.container_main_order{
+
+.container_main_order {
     padding: 3px 3px 0px 0px;
-    max-width:1297px;
-    margin:0 auto;
+    max-width: 1297px;
+    margin: 0 auto;
     position: relative;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    //font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
     text-decoration: none;
-    color:#000000;
-//background-color:#DCDCDC;
+    color: #000000;
 }
 
-.daughter_container1{
-    display:inline-block;
-    height:800px;
-    width:39%;
-    //background-color: #ededed;
+
+.reduceAsAScroll{
+    width:99%;
+}
+
+.daughter_container25 {
+    display: inline-block;
+    width: 20%;
     vertical-align: top;
-
 }
 
-.daughter_container2{
-    display:inline-block;
-    height:800px;
-    width:30%;
-    background-color: #ededed;
+.element-Div {
+    top: 1px;
+    left: 0px;
+    width: 79%;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px;
 }
 
-.daughter_container3{
-    display:inline-block;
-    height:800px;
-    width:30%;
-//background-color: #ededed;
-    vertical-align: top;
-
-}
-
-.vertical_menu{
+.vertical_menu {
     position: absolute;
-    width:29%;
+    width: 29%;
 
 }
-.vertical_menu_button{
 
-    text-align-last:justify;
-    display:block;
-    padding-left:5px;
+.select_metal {
+    text-align-last: justify;
+}
+
+.vertical_menu_space {
+
+    display: block;
+    padding-left: 5px;
     padding-top: 5px;
-    padding-bottom:10px;
+    padding-bottom: 10px;
     text-decoration: none;
-    color:#000000;
-    border-bottom: solid 1px #A9A9A9;
-    margin:5px;
-
-}
-.vertical_menu_button:hover{
-
-
-    text-align-last:justify;
-    display:block;
-    padding-left:5px;
-    padding-top: 5px;
-    padding-bottom:10px;
-    text-decoration: none;
-    color:#000000;
-    background-color:#DCDCDC;
-    border-bottom: solid 1px #A9A9A9;
-    margin:5px;
+    color: #000000;
+    margin: 5px;
 
 }
 
-.select_metal{
-    text-align-last:justify;
-}
 
-.vertical_menu_button_left{
-    text-decoration: none;
-}
-.vertical_menu_button_rigtht{
-    text-decoration: none;
-}
-
-.vertical_menu_space{
-
-    display:block;
-    padding-left:5px;
-    padding-top: 5px;
-    padding-bottom:10px;
-    text-decoration: none;
-    color:#000000;
-//border-bottom: solid 1px #A9A9A9;
-    margin:5px;
+.right_cell {
+    display: inline-block;
 
 }
 
-.vertical_menu_button_rigth_panel{
-
-    display:block;
-    padding-left:5px;
-    padding-top: 5px;
-    padding-bottom:10px;
-    text-decoration: none;
-    color:#000000;
-    margin:5px;
-}
-
-.right_cell{
-    display:inline-block;
+.left_cell {
+    display: inline-block;
 
 }
-.left_cell{
-    display:inline-block;
 
+/* -----------------------------------------*/
+/*additional_data
+/* -----------------------------------------*/
+.additional_data {
+    color: white;
+    background: #373a3c;
+}
+
+.data_L {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.data_R {
+    width: 59%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
 }
 
 /* -----------------------------------------*/
 /* daughter_container3 */
 /* -----------------------------------------*/
 
-.images_div{
-    display:block;
+.images_div {
+    display: block;
 
 }
 
-[check ='checkbox']{
-//border: 2px dashed #696969;
-    background-color:#696969;
+[check ='checkbox'] {
+/ / border: 2 px dashed #696969;
+    background-color: #696969;
 }
 
-.images_door_class:hover{
-//border: 2px dashed #696969;
-    background-color:#696969;
-}
-
-.images_door_class{
-    padding: 5px 5px 5px 5px;
-    cursor:pointer;
-//display:block-lile;
-}
-
-.description_images_door_class{
-//display:block-lile;
+.description_images_door_class {
     vertical-align: top;
 }
 
-[show="ghost_lement"]{
-    display:none;
-}
+.vertical_menu_checkbox {
 
-
-
-.vertical_menu_checkbox{
-
-    text-align-last:justify;
-//display:block;
+    text-align-last: justify;
     text-decoration: none;
-    color:#000000;
     border-bottom: solid 1px #A9A9A9;
 
+}
+
+.right_cell_checkbox {
+
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 7px;
 
 }
 
-.right_cell_checkbox{
+.left_cell_checkbox {
 
     vertical-align: top;
-    display:inline-block;
-    margin-top:7px;
-
-}
-
-.left_cell_checkbox{
-
-    vertical-align: top;
-    display:inline-block;
+    display: inline-block;
     padding: 10px 10px;
 }
 
-.input_size{
-    border-color:white;
-    border-width:0;
-    font-size:50px;
+.input_size {
+    border-color: white;
+    border-width: 0;
+    font-size: 50px;
     text-align: right;
 }
 
-.input_div{
-    text-align-last:justify;
-//display:block;
+.input_div {
+    text-align-last: justify;
+/ / display: block;
     text-decoration: none;
-    color:#000000;
+    color: #000000;
 }
 
-.images_Color{
-    height:150px;
-    margin:3px;
-}
-.div_images_Color{
-    display:inline-block;
-    color:#696969;
-    margin:0px;
-}
-.div_images_Color:hover{
-    display:inline-block;
-    color:#FFFFFF;
-    background-color:#696969;
-}
-.div_images_Color[check ="checkbox"]{
-    color:#FFFFFF;
+.images_Color {
+    height: 150px;
+    margin: 3px;
 }
 
-.to_calculate{
-    height:35px;
-    width:200px;
-    color:#000000;
-    background-color:#DCDCDC;
+.div_images_Color {
+    display: inline-block;
+    margin: 0px;
+}
+
+.div_images_Color:hover {
+    display: inline-block;
+    color: #FFFFFF;
+    background-color: #696969;
+}
+
+.div_images_Color[check ="checkbox"] {
+    color: #FFFFFF;
+}
+
+.images_furniture {
+    height: 100px;
+    width: 100px;
+    margin: 3px;
+}
+
+.div_images_furniture {
+    display: inline-block;
+    margin: 0px;
+}
+
+.div_images_furniture:hover {
+    display: inline-block;
+    color: #FFFFFF;
+    background-color: #696969;
+}
+
+.div_images_furniture[check ="checkbox"] {
+    color: #FFFFFF;
+}
+
+.to_calculate {
+    height: 35px;
+    width: 200px;
+    color: #373a3c;
+/ / background-color: #DCDCDC;
     border-radius: 5px;
     position: absolute;
-    left:5px;
-    top:9px;
-    z-index:12;
-    padding:10px 0px 0px 10px;
+    left: 5px;
+    top: 9px;
+    z-index: 12;
+    padding: 10px 0px 0px 10px;
 }
-.to_calculate:hover{
-    height:700px;
-    width:37%;
-    color:#FFFFFF;
-    background-color:#696969;
+
+.to_calculate:hover {
+    height: 700px;
+    width: 37%;
+    color: #373a3c;
+/ / background-color: #696969;
     border-radius: 5px;
     position: absolute;
-    padding:10px 0px 0px 10px;
-    left:5px;
-    top:9px;
-    cursor:pointer;
-    z-index:12;
+    padding: 10px 0px 0px 10px;
+    left: 5px;
+    top: 9px;
+    cursor: url(/images/Fable_Sword.gif), pointer;;
+    z-index: 12;
 }
 
-.to_calculate_span{
-    padding:5px 10px 0px 0px;
+.to_calculate_span {
+    padding: 5px 10px 0px 0px;
 }
-.to_calculate_span:hover{
-    padding:5px 10px 0px 0px;
-    color:#1E90FF;
+
+.to_calculate_span:hover {
+    padding: 5px 10px 0px 0px;
+    color: #1E90FF;
 }
-.getСut{
-    height:35px;
-    width:150px;
-    color:#000000;
-    background-color:#DCDCDC;
+
+.getСut {
+    height: 35px;
+    width: 150px;
+    color: #000000;
+    background-color: #DCDCDC;
     border-radius: 5px;
     position: absolute;
-    left:158px;
-    top:9px;
-    z-index:12;
+    left: 158px;
+    top: 9px;
+    z-index: 12;
 }
-.getСut:hover{
-    height:35px;
-    width:150px;
-    color:#FFFFFF;
-    background-color:#696969;
+
+.getСut:hover {
+    height: 35px;
+    width: 150px;
+    color: #FFFFFF;
+    background-color: #696969;
     border-radius: 5px;
     position: absolute;
-    left:158px;
-    top:9px;
-    cursor:pointer;
-    z-index:12;
+    left: 158px;
+    top: 9px;
+    cursor: url(/images/Fable_Sword.gif), pointer;;
+    z-index: 12;
 }
 
-.nameDoor{
-    height:35px;
-    width:35%;
-    color:#000000;
-    //background-color:#ededed;
+.nameDoor {
+    height: 35px;
+    width: 35%;
+    color: #000000;
+/ / background-color: #ededed;
     border-radius: 5px;
     position: absolute;
-    left:5px;
-    top:49px;
+    left: 5px;
+    top: 49px;
 }
 
-
-
-.sizeDoorRepresentation{
-    display:inline-block;
-    position:relative;
-    top:60px;
-    left:20px;
+.sizeDoorRepresentation {
+    display: inline-block;
+    position: relative;
+    top: 60px;
+    left: 20px;
     vertical-align: top;
     border-top: solid 1px #A9A9A9;
     border-bottom: solid 1px #A9A9A9;
 
 }
 
-
-
-.Sheet{
-    display:inline-block;
-    position:relative;
-    top:30px;
-    left:20px;
-    background-color:#778899;
+.Sheet {
+    display: inline-block;
+    position: relative;
+    top: 30px;
+    left: 20px;
+    background-color: #778899;
 }
-.doorPart{
-    z-index:10;
-    background-color:#245882;
-    position:absolute;
-    display:inline-block;
+
+.doorPart {
+    z-index: 10;
+    background-color: #245882;
+    position: absolute;
+    display: inline-block;
     border: 1px solid #808080;
 }
 
 /*
 //orders
 */
-.div_order_management{
-    color:#555;
-    height:20px;
-    margin-left:11px;
-    display:inline-block;
-    border-bottom:solid 1px #DCDCDC;
-    padding-right:5px;
+.div_order_management {
+    color: #555;
+    height: 20px;
+    margin-left: 11px;
+    display: inline-block;
+    border-bottom: solid 1px #DCDCDC;
+    padding-right: 5px;
 }
-.div_order_management:hover{
-    color:#555;
-    height:20px;
-    margin-left:11px;
-    display:inline-block;
-    border-bottom:solid 1px #808080;
-    padding-right:5px;
+
+.div_order_management:hover {
+    color: #555;
+    height: 20px;
+    margin-left: 11px;
+    display: inline-block;
+    border-bottom: solid 1px #808080;
+    padding-right: 5px;
 }
-.button_cap_menu{
+
+.button_cap_menu {
     text-decoration: none;
-    font-size:20px;
+    font-size: 20px;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color:#245882;
-}
-.button_cap_menu:hover{
-    cursor:pointer;
-    text-decoration: none;
-    font-size:20px;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    color:#245882;
-}
-th{
-    background-color:#D3D3D3;
-}
-tr:hover{
-    background-color:#D3D3D3;
-}
-[pickOut="on"]{
-    background-color:#D3D3D3;
-}
-.order_header{
-    margin-top:10px;
-    margin-bottom:15px;
-}
-.order_headerL{
-    display:inline-block;
-    width:30%;
-}
-.order_headerR{
-    display:inline-block;
-    vertical-align: top;
-    width:65%;
-}
-
-[available="no"]{
-    color: #bfbfbf;
-}
-[available="yes"]{
-    color:#000000;
-}
-.input{
-    width:100%;
-    border: 0px solid #808080;
-    font-size:20px;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    margin-right:1px;
-    border-radius: 5px;
-    background-color:#DCDCDC;
-
-}
-.inputData{
-    width:100%;
-    border: 0px solid #808080;
-    font-size:20px;
-    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    border-radius: 5px;
-    background-color:#DCDCDC;
-}
-
-.color_pages{
     color: #245882;
 }
-.pag:hover{
-    cursor: pointer;
+
+.button_cap_menu:hover {
+    cursor: url(/images/Fable_Sword.gif), pointer;;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: #245882;
 }
 
-.headerLine{
-    height:55px;
+[pickOut="on"] {
+    background-color: #D3D3D3;
+}
+
+.order_header {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.order_headerL {
+    display: inline-block;
+    width: 30%;
+}
+
+.order_headerR {
+    display: inline-block;
+    vertical-align: top;
+    width: 65%;
+}
+
+[available="no"] {
+    color: #bfbfbf;
+}
+
+.input {
+    width: 100%;
+    border: 0px solid #808080;
+    font-size: 20px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    margin-right: 1px;
+    border-radius: 5px;
+    background-color: #DCDCDC;
 
 }
 
-.nameheaderLine{
-    font-size:16px;
-    color:#14181B;
+.inputData {
+    width: 100%;
+    border: 0px solid #808080;
+    font-size: 20px;
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    border-radius: 5px;
+    background-color: #DCDCDC;
+}
+
+.color_pages {
+    color: #245882;
+}
+
+.pag:hover {
+    cursor: url(/images/Fable_Sword.gif), pointer;;
+}
+
+.headerLine {
+    height: 55px;
+
+}
+
+.nameheaderLine {
+    font-size: 16px;
+    color: #14181B;
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
-.checkbox{
+.checkbox {
     text-align: right;
+}
+
+.arrow_explanations {
+    margin-left: 25px;
+    color: #808080;
+}
+
+.select_size {
+    text-align-last: left;
+}
+
+.linebottom {
+    width: 100%;
+    height: 3px;
+    border-bottom: solid 1px #D3D3D3;
+    margin: 10px;
+}
+
+.display-4 {
+    margin: 30px;
+}
+
+.form-control {
+    margin-bottom: 5px;
+}
+
+/* ------------------------------------------------- */
+/* card */
+/* ------------------------------------------------- */
+
+.card{
+    float:left;
+    width: 98%;
+    margin-left:3px;
+    margin-bottom:3px;
+}
+
+.images_door_class {
+    padding: 5px 5px 5px 5px;
+    width:30%;
+    margin-top:1px;
+    vertical-align: top;
+}
+
+.card:hover {
+    border:1px solid white;
+    cursor: url(/images/Fable_Sword.gif), pointer;
+}
+
+.images_door_class_p{
+    width:60%;
+    display: inline-block;
+    font-size: 21px;
+    text-align:center;
+}
+.card-body{
+    font-size: 15px;
+}
+
+.typeLine:hover{
+    cursor: url(/images/Fable_Sword.gif), pointer;
+}
+
+.redColor{
+    color: red;
+}
+.notAvailable{
+    color: grey;
+}
+.line_spec{
+    margin-left:15px;
+    display:block;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #333;
+}
+
+.feather {
+    margin-right: 4px;
+    color: #999;
+}
+
+.sword-cursor{
+    cursor: url(/images/Fable_Sword.gif), pointer;
+}
+.textComit{
+    color: grey;
+}
+.greenFlag{
+    //color: forestgreen;
+    background-color: lawngreen;
+}
+
+/*bootstrap*/
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
 }

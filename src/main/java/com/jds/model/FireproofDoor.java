@@ -1,14 +1,10 @@
 package com.jds.model;
 
-import com.jds.entity.DoorClass;
-import com.jds.entity.Metal;
 import com.jds.model.cutting.Sheet;
-import com.jds.model.modelEnum.SideDoorOpen;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class FireproofDoor implements Door{
+public class FireproofDoor {
 
     private int id;
     private String name;

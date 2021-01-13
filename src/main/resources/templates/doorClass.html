@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/doorClassScript.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/logoSett.css" />
+	<link rel="stylesheet" type="text/css" href="css/displayCss.css" />
+	<!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-4.3.1css/bootstrap.min.css">
+</head>
+<body>
+
+
+<div class="top_head">
+	<div class="container-fluid" id="intro-dm">
+		<a th:href="@{/}"><img src="images/Header_widht_1300_002 ltl.jpg"></a>
+	</div>
+</div>
+
+	<div class="top_head">
+		<div class="header_home" >
+			<a th:href="@{/doorclasslist}" class="logo_home">door class</a>
+		</div>
+		<div class="header_home" >
+			<a th:href="@{/doortypelist}" class="logo_home">door type</a>
+		</div>
+	</div>
+	<br>
+	
+	<div class="top_head">
+
+		<span id = "fireproof" th:text="${fireproof}" show="ghost_lement"></span>
+		<span id = "hot" th:text="${hot}" show="ghost_lement"></span>
+
+		<form th:action="@{/doorclass}" method="post">
+
+
+		<div class="form-group">
+
+			    <input type="text" name="classId" th:value="${classId}" show="ghost_lement">
+
+				<h1 class="display-4">класс двери</h1>
+				<div class="linebottom"></div><br>					
+
+				<div class="col-md-6 mb-3">
+					<label for="name">имя:</label>
+					<input type="text" class="form-control" name="name" id="name" placeholder="имя" th:value="${name}" >
+				</div>
+				
+				<div class="col-md-6 mb-3">
+					<label for="description">описание:</label>
+					<input type="text" class="form-control" name="description" id="description" placeholder="описание" th:value="${description}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="description">описание:</label>
+					<input type="text" class="form-control" name="namePicture" id="namePicture" placeholder="картинка" th:value="${namePicture}" >
+				</div>
+				
+				<div class="custom-control custom-switch">
+					  <input type="checkbox" class="custom-control-input" name="fireproofcheckbox" id="fireproofcheckbox">
+					  <label class="custom-control-label" for="fireproofcheckbox">противопожарная</label>
+				</div>
+				
+				<div class="custom-control custom-switch">
+					  <input type="checkbox" class="custom-control-input" name="hotcheckbox"  id="hotcheckbox">
+					  <label class="custom-control-label" for="hotcheckbox">теплая</label>
+				</div>
+				
+				<div class="linebottom"></div><br>
+			    <button type="button" class="btn btn-primary btn-lg " id="close">закрыть</button>
+				<button type="submit" class="btn btn-primary btn-lg " id="saveClass">сохранить</button>
+
+				<!--
+				disabled
+				-->
+				
+			</div>
+		</form>
+		</div>
+
+
+</body>
+</html>

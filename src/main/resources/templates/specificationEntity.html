@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="../../css/bootstrap-4.3.1css/bootstrap.min.css">
+
+    <!-- your personal CSS -->
+    <script type="text/javascript" src="../../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../js/specificationEntity.js"></script>
+    <script type="text/javascript" src="js/specification.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/logoSett.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/displayCss.css"/>
+
+</head>
+<body>
+
+<div class="top_head">
+    <div class="container-fluid" id="intro-dm">
+        <a th:href="@{/}"><img src="../../images/Header_widht_1300_002 ltl.jpg"></a>
+    </div>
+</div>
+
+<div class="top_head">
+    <div class="form-group">
+
+        <h1 class="display-4" id="specificationIdName">Спецификация</h1>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" id="save">сохранить</button>
+                <button type="button" class="btn btn-primary" id="close">закрыть</button>
+                <button type="button" class="btn btn-primary" id="delete">удалить</button>
+            </div>
+        </div>
+
+        <!--id-and-id-manufacturer-program-->
+        <div class="form-group">
+
+            <!--name-->
+            <div class="col-md-6 mb-3">
+                <label for="name">Наименование:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                       placeholder="Enter name">
+                <small id="nameHelp" class="form-text text-muted">Наименование спецификации</small>
+            </div>
+
+            <!--type-of-door-color-->
+            <div class="col-md-6 mb-3">
+                <label for="modelOfDoor">Модель двери:</label>
+                <select class="form-control" id="modelOfDoor" Enter type>
+                </select>
+                <small id="typeHelp" class="form-text text-muted"></small>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-3 mb-3">
+
+                        <button type="button" class="btn btn-primary" id="addLine">Добавить</button>
+                        <button type="button" class="btn btn-primary disabled" id="deletLine">Удалить</button>
+
+                </div>
+
+            </div>
+
+            <table class="Table">
+                <tr>
+                    <th>#</th>
+                    <th>id</th>
+                    <th>Наименование</th>
+                    <th>Значение</th>
+                    <th>Формула</th>
+                    <th>Имя объекта</th>
+                    <th>Операция выпуска</th>
+                    <th>Операция списания</th>
+                </tr>
+                <tr th:each="s : ${spec}">
+                    <td>#</td>
+                    <td th:utext="${s.id}">..</td>
+                    <td class="vary_field text_select" th:utext="${s.name}">..</td>
+                    <td class="vary_field text_input" th:utext="${s.condition1}">..</td>
+                    <td class="vary_field text_input" th:utext="${s.calculationFormula1}">..</td>
+
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

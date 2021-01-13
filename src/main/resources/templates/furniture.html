@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap-4.3.1css/bootstrap.min.css">
+
+    <!-- your personal CSS -->
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/furniture.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/logoSett.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/displayCss.css"/>
+
+</head>
+<body>
+
+    <div class="top_head">
+        <div class="container-fluid" id="intro-dm">
+            <a th:href="@{/}"><img src="../images/Header_widht_1300_002 ltl.jpg"></a>
+        </div>
+    </div>
+
+
+    <div class="top_head">
+        <div class="form-group">
+
+            <h1 class="display-4">Фурнитура</h1>
+
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <button type="button" class="btn btn-primary" id="save">сохранить</button>
+                    <button type="button" class="btn btn-primary" id="close">закрыть</button>
+                    <button type="button" class="btn btn-primary" id="delete">удалить</button>
+                </div>
+            </div>
+
+            <h4 class="chapter">id</h4>
+            <br>
+
+            <!--id-and-id-manufacturer-program-->
+            <div class="form-group">
+                <div class="row">
+                    <!--id-->
+                    <div class="col disabled">
+                        <label for="idFurniture">Номер:</label>
+                        <input type="text" class="form-control" id="idFurniture" aria-describedby="idHelp" placeholder="Enter id">
+                        <small id="idHelp" class="form-text text-muted">id фурнитуры, уникальный номер фурнитуры.</small>
+                    </div>
+                    <!--id-manufacturer-program-->
+                    <div class="col">
+                        <label for="idManufacturFurniture">Номер производителя:</label>
+                        <input type="text" class="form-control" id="idManufacturFurniture" aria-describedby="idManHelp" placeholder="Enter id">
+                        <small id="idManHelp" class="form-text text-muted">id фурнитуры, уникальный номер фурнитуры в программе завода.</small>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="chapter">Основные настройки</h4>
+            <br>
+
+            <div class="form-group">
+
+                <!--name-->
+                <div class="col-md-6 mb-3">
+                    <label for="nameFurniture">Наименование:</label>
+                    <input type="text" class="form-control" id="nameFurniture" aria-describedby="nameHelp" placeholder="Enter name">
+                    <small id="nameHelp" class="form-text text-muted">Наименование фурнитуры.</small>
+                </div>
+
+                <!--type-of-furniture-->
+                <div class="col-md-6 mb-3">
+                    <label for="typeOfFurniture">Тип фурнитуры:</label>
+                    <select class="form-control" id="typeOfFurniture"  Enter type>
+                    </select>
+                    <small id="typeHelp" class="form-text text-muted">тип фурнитуры.</small>
+                </div>
+
+                <!--cylinder_lock-->
+                <div class="col-md-6 mb-3">
+                    <div class="custom-control custom-switch" id="itCylinderLockSwitch">
+                        <input type="checkbox" class="custom-control-input topLockLineCheckbox" id="itCylinderLock" >
+                        <label class="custom-control-label" for="itCylinderLock">Цилиндровый замок</label>
+                    </div>
+                    <small id="itCylinderLockHelp" class="form-text text-muted">добовляет возможность выбрать цилиндр</small>
+                </div>
+
+                <!--comment-->
+                <div class="col-md-6 mb-3">
+                    <label for="comment">Комментарий:</label>
+                    <input type="text" class="form-control" id="comment" aria-describedby="commentHelp" placeholder="Enter comment">
+                    <small id="commentHelp" class="form-text text-muted">Комментарий.</small>
+                </div>
+            </div>
+
+
+            <h4 class="chapter">Настройки отображения</h4>
+            <br>
+
+            <!--picture-Path-First-->
+            <div class="col-md-6 mb-3">
+                <label for="picturePathFirst">Картинка:</label>
+                <input type="text" class="form-control" id="picturePathFirst" aria-describedby="picturePathFirstHelp" placeholder="Enter picturePathFirst">
+                <small id="picturePathFirstHelp" class="form-text text-muted">Картинка, для показа в списках выбора.</small>
+            </div>
+
+            <!--sketch-Path-First-->
+            <div class="col-md-6 mb-3">
+                <label for="sketchPathFirst">Картинка для эскиза:</label>
+                <input type="text" class="form-control" id="sketchPathFirst" aria-describedby="sketchPathFirstHelp" placeholder="Enter sketchPathFirst">
+                <small id="sketchPathFirstHelp" class="form-text text-muted">Эскиз, для отображения на эскизе двери.</small>
+            </div>
+
+            <h4 class="chapter">Настройки стоимости</h4>
+            <br>
+
+            <!--price-->
+            <div class="col-md-6 mb-3">
+                <label for="price">Цена:</label>
+                <input type="number" class="form-control" id="price" aria-describedby="priceHelp" placeholder="Enter price">
+                <small id="priceHelp" class="form-text text-muted">Цена.</small>
+            </div>
+
+            <!--price-Comit-->
+            <div class="col-md-6 mb-3">
+                <label for="priceComit">Комментарий к цене:</label>
+                <input type="text" class="form-control" id="priceComit" aria-describedby="priceComitHelp" placeholder="Enter priceComit">
+                <small id="priceComitHelp" class="form-text text-muted">коментарий цены.</small>
+            </div>
+
+            <!--quantity-->
+            <div class="form-group ghost">
+                <label for="quantity">Количество:</label>
+                <input type="email" class="form-control" id="quantity" aria-describedby="quantityHelp" placeholder="Enter type">
+                <small id="quantityHelp" class="form-text text-muted">Количество для списания.</small>
+            </div>
+
+            <!--is-Two-Section-Lock-->
+            <div class="form-group ghost">
+                <label for="isTwoSectionLock">Двухсекционный замок:</label>
+                <input type="email" class="form-control" id="isTwoSectionLock" aria-describedby="isTwoSectionLockHelp" placeholder="Enter TwoSectionLock">
+                <small id="itisTwoSectionLock" class="form-text text-muted">Двухсекционный (для замков), признак для расчетов и отборов .</small>
+            </div>
+
+
+            <!--longKey-->
+            <div class="form-group ghost">
+                <label for="longKey">Длинный ключ:</label>
+                <input type="email" class="form-control" id="longKey" aria-describedby="longKeyHelp" placeholder="Enter longKey">
+                <small id="longKeyHelp" class="form-text text-muted">Длинный ключ (для замков), признак для расчетов и отборов .</small>
+            </div>
+
+            <!--bugelHandle-->
+            <div class="form-group ghost">
+                <label for="bugelHandle">Бугельная ручка:</label>
+                <input type="email" class="form-control" id="bugelHandle" aria-describedby="bugelHandleHelp" placeholder="Enter bugelHandle">
+                <small id="bugelHandleHelp" class="form-text text-muted">Бугельная ручка (для замков), признак для расчетов и отборов .</small>
+            </div>
+
+            <!--armorLock-->
+            <div class="form-group ghost">
+                <label for="armorLock">Броне накладка:</label>
+                <input type="email" class="form-control" id="armorLock" aria-describedby="armorLockHelp" placeholder="Enter armorLock">
+                <small id="armorLockHelp" class="form-text text-muted">Броне накладка (для замков), признак для расчетов и отборов .</small>
+            </div>
+
+
+
+            <!--for-Warm-Doors-->
+            <div class="form-group ghost">
+                <label for="forWarmDoors">Для теплой двери:</label>
+                <input type="email" class="form-control" id="forWarmDoors" aria-describedby="forWarmDoorsHelp" placeholder="Enter forWarmDoors">
+                <small id="forWarmDoorsHelp" class="form-text text-muted">Признак, только для теплой двери.</small>
+            </div>
+
+            <!--number-Of-Door-Leaves-->
+            <div class="form-group ghost">
+                <label for="numberOfDoorLeaves">Для количества створок:</label>
+                <input type="email" class="form-control" id="numberOfDoorLeaves" aria-describedby="numberOfDoorLeavesHelp" placeholder="Enter numberOfDoorLeaves">
+                <small id="numberOfDoorLeavesHelp" class="form-text text-muted">Признак, только для этоко количества створок.</small>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+</html>

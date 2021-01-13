@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="../../../../css/bootstrap-4.3.1css/bootstrap.min.css">
+
+    <!-- your personal CSS -->
+    <script type="text/javascript" src="../../../../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../../js/specificationLine.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../css/logoSett.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../css/displayCss.css"/>
+
+
+</head>
+<body>
+
+<div class="top_head">
+    <div class="container-fluid" id="intro-dm">
+        <a th:href="@{/}"><img src="../../../../images/Header_widht_1300_002 ltl.jpg"></a>
+        <span class="ghost" id="id" th:text="${id}"></span>
+        <span class="ghost" id="line_id" th:text="${line_id}"></span>
+
+    </div>
+</div>
+
+<div class="top_head">
+    <div class="form-group">
+
+        <h1 class="display-4">Цвет</h1>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" id="save">сохранить</button>
+                <button type="button" class="btn btn-primary" id="close">закрыть</button>
+                <button type="button" class="btn btn-primary" id="delete">удалить</button>
+            </div>
+        </div>
+        <!--id-and-id-manufacturer-program-->
+        <div class="form-group">
+
+            <!--name-->
+            <div class="col-md-6 mb-3">
+                <label for="name">Наименование:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                       placeholder="Enter name">
+            </div>
+            <!--value-->
+            <div class="col-md-6 mb-3">
+                <label for="valueSpec">Значение:</label>
+                <input type="text" class="form-control" id="valueSpec" aria-describedby="valueHelp"
+                       placeholder="Enter value">
+            </div>
+
+            <!--formula-->
+            <div class="col-md-6 mb-3">
+                <label for="formula">Формула:</label>
+                <select class="form-control" id="formula" Enter type>
+                </select>
+            </div>
+
+            <!--nameObject-->
+            <div class="col-md-6 mb-3">
+                <label for="nameObject">Имя объекта:</label>
+                <input type="text" class="form-control" id="nameObject" aria-describedby="nameObjectHelp"
+                       placeholder="Enter value">
+                <small id="nameObjectHelp" class="form-text text-muted">имя объекта</small>
+            </div>
+
+            <!--release_operation-->
+            <div class="col-md-6 mb-3">
+                <label for="releaseOperation">Операция выпуска:</label>
+                <input type="text" class="form-control" id="releaseOperation"
+                       placeholder="Enter value">
+            </div>
+
+            <!--write_off_operation-->
+            <div class="col-md-6 mb-3">
+                <label for="writeOffOperation">Операция списания:</label>
+                <input type="text" class="form-control" id="writeOffOperation"
+                       placeholder="Enter value">
+            </div>
+
+    </div>
+</div>
+
+</body>
+</html>

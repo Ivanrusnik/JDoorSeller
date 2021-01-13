@@ -1,10 +1,12 @@
 package com.jds.controller;
 
-import com.jds.entity.*;
-import com.jds.model.RestrictionOfSelectionFields;
+import com.jds.dao.entity.*;
+import com.jds.model.Specification;
 import com.jds.service.MaineService;
+import com.jds.service.UserServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,162 +18,57 @@ import java.util.List;
 @Controller
 public class MainController {
 
+
     @Autowired
     private MaineService service;
-
+    @Autowired
+    private UserServ userService;
 
     @GetMapping(value = "/")
-    public String updateDoorClass(@RequestParam(required = false) String kay,
-                                  @RequestParam(required = false) String dataJson) throws Exception {
-        return "minePageBootstr";
+    public String updateDoorClass() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity principal = (UserEntity) authentication.getPrincipal();
+
+        if (principal.isAdmin()) {
+            return "setting";
+        }
+        return "redirect:orders";
     }
 
     @GetMapping(value = "/login")
-    public String getLogin(@RequestParam(value = "error",required = false)String error,
-                           @RequestParam(value = "logout",required = false)String logout, Model model){
-        model.addAttribute("error",error!=null);
-        model.addAttribute("logout",logout!=null);
+    public String getLogin(@RequestParam(value = "error", required = false) String error,
+                           @RequestParam(value = "logout", required = false) String logout, Model model) {
+        model.addAttribute("error", error != null);
+        model.addAttribute("logout", logout != null);
         return "login";
     }
 
     @GetMapping(value = "/setting")
-    public String setting(@RequestParam(required = false) String kay,
-                                  @RequestParam(required = false) String dataJson, Model model) throws Exception {
-
+    public String setting(Model model) throws Exception {
         List<DoorClass> list = service.getDoorClass();
         model.addAttribute("accountInfos", list);
-        return "settingPage_doorclass.html";
+        return "setting";
     }
-    @GetMapping(value = "/doorclass")
-    public String getDoorClass(@RequestParam(required = false) String kay,
-                               @RequestParam(required = false) String dataJson, Model model) throws Exception {
 
+    @GetMapping(value = "/doorclasslist")
+    public String getDoorClassList(Model model) throws Exception {
         List<DoorClass> list = service.getDoorClass();
         model.addAttribute("accountInfos", list);
-        return "settingPage_doorclass";
-    }
-    @GetMapping(value = "/doortype")
-    public String getDoorType(@RequestParam(required = false) String kay,
-                               @RequestParam(required = false) String dataJson, Model model) throws Exception {
-
-
-        List<DoorType> list = service.getDoorType();
-        model.addAttribute("accountInfos", list);
-        return "settingPage_doortype";
+        return "doorClassList";
     }
 
-    @GetMapping(value = "/metal")
-    public String getMetal(@RequestParam(required = false) String kay,
-                              @RequestParam(required = false) String dataJson, Model model) throws Exception {
-
-        List<Metal> list = service.getMetals();
-        model.addAttribute("accountInfos", list);
-        return "settingPage_metal";
-    }
-
-
-    @GetMapping(value = "/calculation")
-    public String calculation(Model model,
-                              @RequestParam(required = false) String orderId,
-                              @RequestParam(required = false) String id) throws Exception {
-        model.addAttribute("orderId", orderId);
-        model.addAttribute("id", id);
-        return "calculation";
-    }
-
-    @GetMapping(value = "/door",produces= MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/class/list", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public DoorEntity data(Model model,
-                         @RequestParam(required = false) String id,
-                         @RequestParam(required = false) String orderId) throws Exception {
-
-        return service.getDoor(id,orderId);
+    public List<DoorClass> getDoorClassis() throws Exception {
+        return service.getDoorClass();
     }
 
-    @PostMapping(value = "/data", produces= MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/availableGroups")
     @ResponseBody
-    public DoorEntity calculateTheDoor(Model model,
-                     @RequestBody DoorEntity door) throws Exception {
+    public List<DoorClass> getAavailableDoorClass() throws Exception {
 
-        return service.calculateTheDoor(door);
+        return service.getDoorClass();
     }
-
-    @PostMapping(value = "/saveDoor", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public DoorEntity saveDoor(@RequestParam(required = false) String kay,
-                                      @RequestParam(required = false) String dataJson,
-                                      Model model,
-                                      @RequestBody DoorEntity door) throws Exception {
-
-
-        return service.saveDoor(door);
-    }
-
-    @GetMapping(value = "/doorlimit", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public RestrictionOfSelectionFields getRestrictionOfSelectionFields(Model model,
-                               @RequestParam String idDoorType) throws Exception {
-
-        return service.getRestrictionOfSelectionFields(idDoorType);
-    }
-
-    @GetMapping(value = "/getOrder", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public DoorsОrder saveOrder(Model model,
-                                @RequestParam(required = false) String orderId) throws Exception {
-
-        return service.getOrder(orderId);
-    }
-
-    @PostMapping(value = "/saveOrder", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public DoorsОrder saveOrder(@RequestParam(required = false) String kay,
-                                  @RequestParam(required = false) String dataJson,
-                                  Model model,
-                                  @RequestBody DoorsОrder order) throws Exception {
-
-
-        return service.saveOrder(order);
-    }
-
-    @GetMapping(value = "/order")
-    public String getOrder(@RequestParam(required = false) String kay,
-                           @RequestParam(required = false) String dataJson, Model model,
-                           @RequestParam(required = false) String orderId) throws Exception {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserEntity principal  = (UserEntity) authentication.getPrincipal();
-
-        model.addAttribute("username",principal.getUsername());
-        model.addAttribute("orederId", (orderId==null)? 0:orderId);
-        return "order";
-    }
-
-    @DeleteMapping(value = "/door", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public DoorsОrder deleteOrder(@RequestParam(required = false) String kay,
-                           @RequestParam(required = false) String dataJson, Model model,
-                           @RequestParam(required = false) String orderId,
-                           @RequestParam(required = false) String id ) throws Exception {
-
-
-        return service.deleteDoorFromOrder(id,orderId);
-    }
-
-    @GetMapping(value = "/orders")
-    public String getOrders(Model model) throws Exception {
-        List<DoorsОrder> list = service.getOrders();
-        model.addAttribute("accountInfos", list);
-        return "orders";
-    }
-
-    @DeleteMapping(value = "/order", produces= MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public String deleteOrder( Model model,
-                                  @RequestParam(required = false) String orderId) throws Exception {
-
-        return service.deleteOrder(orderId);
-    }
-
 
 }

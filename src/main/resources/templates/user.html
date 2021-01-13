@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../js/user/user.js"></script>
+	<script type="text/javascript" src="../js/shared/page-selector-class.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/logoSett.css" />
+	<link rel="stylesheet" type="text/css" href="css/displayCss.css" />
+	<!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-4.3.1css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="top_head">
+	<div class="container-fluid" id="intro-dm">
+		<a th:href="@{/}"><img src="images/Header_widht_1300_002 ltl.jpg"></a>
+	</div>
+</div>
+
+	<div class="top_head">
+		<div class="header_home" >
+			<a th:href="@{/}" class="logo_home">setting</a>
+		</div>
+		<div class="header_home" >
+			<a th:href="@{/doorclasslist}" class="logo_home">door class</a>
+		</div>
+		<div class="header_home" >
+			<a th:href="@{/doortypelist}" class="logo_home">door type</a>
+		</div>
+	</div>
+	<br>
+	
+	<div class="top_head">
+
+		<span id = "enabled" th:text="${user.enabled}" show="ghost_lement"></span>
+
+		<form th:action="@{/users}" method="post">
+
+			<div class="form-group">
+
+			    <input class="ghost" type="text" name="userId" id="userId" th:value="${user.id}" show="ghost_lement">
+
+				<h1 class="display-4">Пользователь</h1>
+
+				<div class="col">
+					<button type="button" class="btn btn-primary btn-lg " id="close">закрыть</button>
+					<button type="submit" class="btn btn-primary btn-lg " id="saveClass">сохранить</button>
+					<button type="button" class="btn btn-primary btn-lg " id="userorder">заказы пользователя</button>
+				</div>
+
+				<div class="col">
+					<div class="row">
+						<div class="col-2">
+							<h1 class="display-1" th:text="${user.orderCounter}"></h1>
+							<p class="textComit">заказы:</p>
+						</div>
+						<div class="col-2">
+							<h1 class="display-1" th:text="${user.workOrderCounter}"></h1>
+							<p class="textComit">заказы в работе:</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="username">имя:</label>
+					<input type="text" class="form-control" name="username" id="username" placeholder="имя" th:value="${user.username}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="password">new password:</label>
+					<input type="text" class="form-control" name="password" id="password" placeholder="password" >
+				</div>
+
+				<!--RoleUser-->
+				<div class="col-md-6 mb-3">
+					<label for="role">Роль:</label>
+					<input class="ghost" type="text" id="RoleUserFromObject" th:value="${user.role}" show="ghost_lement">
+					<select class="form-control" id="role" name="role">
+					</select>
+					<p class="textComit">назначает пользователю роль</p>
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="discount">Скидка,%:</label>
+					<input type="number" class="form-control" name="discount" id="discount" placeholder="%" th:value="${user.discount}" >
+					<p class="textComit">скидка от цен завода. это значение доступно только сдесь и больше ни где не отображается</p>
+				</div>
+
+<!--				PriceGroups-->
+				<div class="col-md-6 mb-3">
+					<label for="PriceGroups">Ценавая группа:</label>
+					<input class="ghost" type="text" id="priceGroupsFromJObject" th:value="${user.priceGroup}" show="ghost_lement">
+					<select class="form-control" id="PriceGroups" name="priceGroups">
+					</select>
+					<p class="textComit">назначает пользователю группу цен, для базовой цены расчета двери из настроек моделей</p>
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<div class="custom-control custom-switch">
+						<input type="checkbox" class="custom-control-input" name="enabledСheckbox" id="enabledСheckbox">
+						<label class="custom-control-label" for="enabledСheckbox">enabled</label>
+						<p class="textComit">Выключить пользователя. доступ для пользователя будет закрыть.</p>
+					</div>
+				</div>
+
+				<!--
+				disabled
+				-->
+				
+			</div>
+
+		</form>
+	</div>
+
+
+</body>
+</html>

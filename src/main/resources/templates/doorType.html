@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="js/doorTypeScript.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/logoSett.css" />
+	<link rel="stylesheet" type="text/css" href="css/displayCss.css" />
+	<!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-4.3.1css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="top_head">
+	<div class="container-fluid" id="intro-dm">
+		<a th:href="@{/}"><img src="images/Header_widht_1300_002 ltl.jpg"></a>
+	</div>
+</div>
+
+
+	
+	<div class="top_head">
+
+
+		<form th:action="@{/doortype}" method="post">
+
+
+		<div class="form-group">
+
+			<input type="text" name="typeId" th:value="${typeId}" show="ghost_lement">
+			<input type="text" name="classId" th:value="${classId}" show="ghost_lement">
+
+
+			<h1 class="display-4">тип двери</h1>
+
+				<button type="button" class="btn btn-primary btn-lg " id="close">закрыть</button>
+				<button type="submit" class="btn btn-primary btn-lg " id="saveClass">сохранить</button>
+
+			<br>
+			<br>
+
+			<h4 class="chapter">Настройка типа</h4>
+			<br>
+
+				<div class="col-md-6 mb-3">
+					<label for="name">имя:</label>
+					<input type="text" class="form-control" name="name" id="name" placeholder="имя" th:value="${type.name}" >
+				</div>
+				
+				<div class="col-md-6 mb-3">
+					<label for="namePicture">путь картинки:</label>
+					<input type="text" class="form-control" name="namePicture" id="namePicture" placeholder="путь картинки" th:value="${type.namePicture}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="doorLeaf">кол. створок:</label>
+					<input type="number" class="form-control" name="doorLeaf" id="doorLeaf" placeholder="кол створок" th:value="${type.doorLeaf}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="nameForPrint">имя для формирование наименования двери:</label>
+					<input type="text" class="form-control" name="nameForPrint" id="nameForPrint" placeholder="имя для печати:" th:value="${type.nameForPrint}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="nameForPrintInternalOpening">имя для формирование наименования внутренней двери:</label>
+					<input type="text" class="form-control" name="nameForPrintInternalOpening" id="nameForPrintInternalOpening" placeholder="имя для печати:" th:value="${type.nameForPrintInternalOpening}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="daysToRelease">производство в днях:</label>
+					<input type="number" class="form-control" name="daysToRelease" id="daysToRelease" placeholder="производство в днях:" th:value="${type.daysToRelease}" >
+				</div>
+
+			<h4 class="chapter">Настройка цен</h4>
+			<br>
+
+				<div class="col-md-6 mb-3">
+					<label for="markUp">наценка %:</label>
+					<input type="number" class="form-control" name="markUp" id="markUp" placeholder="наценка:" th:value="${type.markUp}" >
+				</div>
+
+				<div class="col-md-6 mb-3">
+					<label for="markUpGlassPackage">наценка на стекло %:</label>
+					<input type="number" class="form-control" name="markUpGlassPackage" id="markUpGlassPackage" placeholder="наценка на стекло" th:value="${type.markUpGlassPackage}" >
+				</div>
+
+			<br>
+
+			<input class="ghost" id="priceListInt" th:value="${type.priceList}">
+
+			<div class="custom-control custom-switch">
+				<input type="checkbox" class="custom-control-input" name="priceList" id="priceList">
+				<label class="custom-control-label" for="priceList">расчет по прайсу</label>
+			</div>
+
+			<br>
+
+			<div class="ghost" id="priceSettingByPrice">
+
+				<div class="col-md-6 mb-3">
+					<label for="retailPrice">розничная цена,руб:</label>
+					<input type="number" class="form-control" name="retailPrice" id="retailPrice" placeholder="розничная цена,руб" th:value="${type.retailPrice}">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="wholesalePriceFromStock1">оптовая цена со склада,руб:</label>
+					<input type="number" class="form-control" name="wholesalePriceFromStock1" id="wholesalePriceFromStock1" placeholder="оптовая цена со склада,руб" th:value="${type.wholesalePriceFromStock1}">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="wholesalePriceFromStock2">оптовая цена со склада свыше 1 мил в месяц,руб:</label>
+					<input type="number" class="form-control" name="wholesalePriceFromStock2" id="wholesalePriceFromStock2" placeholder="оптовая цена со склада свыше 1 мил в месяц,руб" th:value="${type.wholesalePriceFromStock2}">
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="wholesalePriceFromOrder">оптовая цена на заказ по предоплате,руб:</label>
+					<input type="number" class="form-control" name="wholesalePriceFromOrder" id="wholesalePriceFromOrder" placeholder="оптовая цена на заказ по предоплате,руб" th:value="${type.wholesalePriceFromOrder}">
+				</div>
+
+			</div>
+
+				<!--
+				disabled
+				-->
+				
+			</div>
+		</form>
+		</div>
+
+
+</body>
+</html>

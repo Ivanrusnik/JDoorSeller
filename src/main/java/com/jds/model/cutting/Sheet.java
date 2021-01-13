@@ -1,7 +1,5 @@
 package com.jds.model.cutting;
 
-import com.jds.model.DoorPart;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,25 +21,25 @@ public class Sheet {
         this.height = height;
         this.horCutList = new LinkedList<>();
         this.containsParts = new ArrayList<>();
-        for(int i=0;i<height;i++){
-            VerticalСut verticalСut = new VerticalСut(false,0,height-i,width,0,width,true);
+        for (int i = 0; i < height; i++) {
+            VerticalСut verticalСut = new VerticalСut(false, 0, height - i, width, 0, width, true);
             this.horCutList.add(new HorizontalCut(verticalСut));
         }
 
     }
 
-    public Sheet(Sheet sheet){
-        this(sheet.getWidth(),sheet.getHeight());
+    public Sheet(Sheet sheet) {
+        this(sheet.getWidth(), sheet.getHeight());
     }
 
-    public double getResidueSpace(){
-        double S = (width*height)/1000000;
-        return (S-amountWorkSpace)/S;
+    public double getResidueSpace() {
+        double S = (width * height) / 1000000;
+        return (S - amountWorkSpace) / S;
     }
 
-    public void calculateAmountWorkSpace(){
-        for (DoorPart doorPart:containsParts){
-            amountWorkSpace += (double)((doorPart.getHeight())*(doorPart.getWidth()))/1000000;
+    public void calculateAmountWorkSpace() {
+        for (DoorPart doorPart : containsParts) {
+            amountWorkSpace += (double) ((doorPart.getHeight()) * (doorPart.getWidth())) / 1000000;
         }
     }
 
@@ -77,22 +75,22 @@ public class Sheet {
         this.horCutList = horCutList;
     }
 
-    public void printSheet(){
+    public void printSheet() {
 
         int step = 50;
-        for(int i=0; i<horCutList.size();i+=step){
+        for (int i = 0; i < horCutList.size(); i += step) {
 
             String printLine = "";
-            String residueCut ="";
+            String residueCut = "";
             List<VerticalСut> verСutList = horCutList.get(i).getVerticalСutList();
-            for (int h=0; h<verСutList.size(); h++){
+            for (int h = 0; h < verСutList.size(); h++) {
                 VerticalСut verСut = verСutList.get(h);
-                if(verСut.isFull() | !verСut.getLast())
+                if (verСut.isFull() | !verСut.getLast())
                     printLine = printLine + verСut.toString();
                 else
                     residueCut = verСut.toString();
             }
-            System.out.println(printLine+residueCut);
+            System.out.println(printLine + residueCut);
         }
     }
 

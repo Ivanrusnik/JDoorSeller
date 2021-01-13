@@ -3,10 +3,10 @@ package com.jds.model;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum Role implements GrantedAuthority {
-    USER;
+    USER,ADMIN,ONE_C;
 
     @Override
     public String getAuthority() {
-        return name();
+        return "ROLE_" + name();
     }
 }

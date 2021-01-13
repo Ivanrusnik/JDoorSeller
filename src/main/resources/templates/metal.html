@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>door seller</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap-4.3.1css/bootstrap.min.css">
+
+    <!-- your personal CSS -->
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/metal.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/logoSett.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/displayCss.css"/>
+
+</head>
+<body>
+
+<div class="top_head">
+    <div class="container-fluid" id="intro-dm">
+        <a th:href="@{/}"><img src="../images/Header_widht_1300_002 ltl.jpg"></a>
+    </div>
+</div>
+
+
+<div class="top_head">
+    <div class="form-group">
+
+        <h1 class="display-4">Металл</h1>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" id="save">сохранить</button>
+                <button type="button" class="btn btn-primary" id="close">закрыть</button>
+                <button type="button" class="btn btn-primary" id="delete">удалить</button>
+            </div>
+        </div>
+
+        <h4 class="chapter">id</h4>
+        <br>
+
+        <!--id-and-id-manufacturer-program-->
+        <div class="form-group">
+            <div class="row">
+                <!--id-->
+                <div class="col disabled">
+                    <label for="idMetal">Номер:</label>
+                    <input type="text" class="form-control" id="idMetal" aria-describedby="idHelp"
+                           placeholder="Enter id">
+                    <small id="idHelp" class="form-text text-muted">id фурнитуры, уникальный номер фурнитуры.</small>
+                </div>
+                <!--id-manufacturer-program-->
+                <div class="col">
+                    <label for="idManufacturerProgram">Номер производителя:</label>
+                    <input type="text" class="form-control" id="idManufacturerProgram" aria-describedby="idManHelp"
+                           placeholder="Enter id">
+                    <small id="idManufacturerProgramHelp" class="form-text text-muted">id фурнитуры, уникальный номер фурнитуры в
+                        программе завода.</small>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="chapter">Основные настройки</h4>
+        <br>
+
+        <div class="form-group">
+
+            <!--name-->
+            <div class="row">
+                <!--name-->
+                <div class="col-md-6 mb-3">
+                    <label for="name">Наименование:</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                           placeholder="Enter name">
+                    <small id="nameHelp" class="form-text text-muted">Наименование в виде толщины листа метала.</small>
+                </div>
+
+                <!--nameDisplayed-->
+                <div class="col-md-6 mb-3">
+                    <label for="nameDisplayed">Наименование для клиентов:</label>
+                    <input type="number" class="form-control" id="nameDisplayed" aria-describedby="nameHelp"
+                           placeholder="Enter 1,1.2,1.5">
+                    <small id="nameDisplayedHelp" class="form-text text-muted">Отображается для клиента при создании двери и
+                        в заказе. Толшина листа числом</small>
+                </div>
+            </div>
+
+            <!--indexHeft-->
+            <div class="col-md-6 mb-3">
+                <label for="indexHeft">Коэфициент веса:</label>
+                <input type="number" class="form-control" id="indexHeft" aria-describedby="nameHelp"
+                       placeholder="Enter index">
+                <small id="indexHeftHelp" class="form-text text-muted">для расчета стоимости металла.</small>
+            </div>
+
+            <!--isUsed-->
+            <div class="col-md-6 mb-3">
+                <div class="custom-control custom-switch" id="isUsedSwitch">
+                    <input type="checkbox" class="custom-control-input topLockLineCheckbox" id="isUsed">
+                    <label class="custom-control-label" for="isUsed">Активен</label>
+                </div>
+                <small id="isUsedHelp" class="form-text text-muted">делает доступным/скрывает для выбора в шаблоне</small>
+            </div>
+
+            <!--comment-->
+            <div class="col-md-6 mb-3 ghost">
+                <label for="comment">Комментарий:</label>
+                <input type="text" class="form-control" id="comment" aria-describedby="commentHelp"
+                       placeholder="Enter comment">
+                <small id="commentHelp" class="form-text text-muted">Комментарий.</small>
+            </div>
+        </div>
+
+
+        <h4 class="chapter">Настройки стоимости</h4>
+        <br>
+
+        <div class="form-group">
+            <!--price-->
+            <div class="col-md-6 mb-3">
+                <label for="price">Цена:</label>
+                <input type="number" class="form-control" id="price" aria-describedby="priceHelp"
+                       placeholder="Enter price">
+                <small id="priceHelp" class="form-text text-muted">Цена за килограмм.</small>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

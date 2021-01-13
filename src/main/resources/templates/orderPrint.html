@@ -4,6 +4,8 @@
 <head>
     <title>door seller</title>    
     <link rel="stylesheet" type="text/css" href="css/print.css" />
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../js/orderPrint.js"></script>
 </head>
 <body>
 <div class="mainDiv">
@@ -22,23 +24,30 @@
 				<th>Кол-во</th>
 				<th>Ед.	</th>
 				<th>Цена</th>
+				<th>Скидка</th>
 				<th>Сумма</th>
 			</tr>
-			<tr th:each="door : ${order.doors}">
-				<td th:utext="${door.id}">..</td>
-				<td th:utext="${door.id}">..</td>
-				<td th:utext="${door.name}">..</td>				
-				<td>1</td>
+
+			<tr th:each="doorsLine, iter : ${order.doorsLine}">
+				<td th:utext="${iter.count}">..</td>
+				<td th:utext="${doorsLine.id}">..</td>
+				<td th:utext="${doorsLine.name}">..</td>
+				<td th:utext="${doorsLine.quantity}">..</td>
 				<td>шт.</td>
-				<td th:utext="${door.priceWithMarkup}">..</td>
-				<td th:utext="${door.priceWithMarkup}">..</td>
+				<td th:utext="${doorsLine.priceWithMarkup}">..</td>
+				<td th:utext="${doorsLine.discount}">..</td>
+				<td th:utext="${doorsLine.totalPrice}">..</td>
+
+
 			</tr>
 
 		</table>
 	</div>	
 	<div class="total">	
 		<span><strong>Итого: </strong></span><span th:utext="${order.totalAmount}"><strong></strong></span><br>
-		<span><strong>В том числе НДС: </strong></span><span th:utext="${order.totalTax}"><strong></strong></span><br>
+	</div>
+	<div class="total totalTax">
+	<span><strong>В том числе НДС: </strong></span><span id="taxText" th:utext="${order.totalTax}"><strong></strong></span><br>
 	</div>		
 		
 		<span><strong>Всего наименований:</strong></span>
