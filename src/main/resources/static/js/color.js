@@ -239,7 +239,7 @@ jQuery("document").ready(function () {
 
     $("#delete").on("click", function () {
         $.ajax({
-            url: "" + getIdFromUrl(),
+            url: "/colors/" + getIdFromUrl(),
             method: "DELETE",
             dataType: "json",
             success: function (data) {
@@ -266,7 +266,7 @@ jQuery("document").ready(function () {
             dataType: "json",
             success: function (data) {
                 JavaObject = data;
-                fillByOject();
+                fillByObject();
             },
             error: function (data) {
                 alert("!ERROR: main image получить не удалось:");
@@ -330,7 +330,7 @@ jQuery("document").ready(function () {
         }
     }
 
-    function fillByOject() {
+    function fillByObject() {
         if (JavaObject != null) {
 
             if (JavaObject.typeOfImage != null) {

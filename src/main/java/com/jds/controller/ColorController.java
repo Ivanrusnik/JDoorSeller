@@ -80,12 +80,11 @@ public class ColorController {
         return service.getMaskFileList(imageType);
     }
 
-    @DeleteMapping(value = "/color/{id}")
+    @DeleteMapping(value = "/colors/{id}")
     @ResponseBody
     public ResponseModel deleteColor(@PathVariable String id) {
 
         return new ResponseModel(service.deleteColor(id));
-
     }
 
     @GetMapping(value = "/image/types")
