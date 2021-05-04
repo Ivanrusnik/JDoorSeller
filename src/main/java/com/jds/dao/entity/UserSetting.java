@@ -23,7 +23,7 @@ public class UserSetting {
     private int retailMargin;
 
     @Column(name = "salestax")
-    private int salesTax;
+    private int salesTax = 20;
 
     @Column(name = "includestax")
     private int includesTax;
